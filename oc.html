@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NewMUN 2026 | Organizing Committee</title>
+
+    <!-- Social share preview (Open Graph + Twitter Card).
+         Replace YOUR-DOMAIN-HERE with your real domain once the site is deployed,
+         so shared links on WhatsApp/Instagram/Twitter show the logo + description correctly. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Organizing Committee | NewMUN 2026" />
+    <meta property="og:description" content="Meet the student leaders behind NewMUN 2026." />
+    <meta property="og:image" content="https://YOUR-DOMAIN-HERE.com/logo.png" />
+    <meta property="og:url" content="https://YOUR-DOMAIN-HERE.com/oc.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Organizing Committee | NewMUN 2026" />
+    <meta name="twitter:description" content="Meet the student leaders behind NewMUN 2026." />
+    <meta name="twitter:image" content="https://YOUR-DOMAIN-HERE.com/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Browser tab icon (proper sizes generated from the NewMUN logo) -->
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .oc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .oc-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .oc-card:hover {
+            border-color: rgba(212,175,55,0.4);
+            box-shadow: var(--shadow-lg), 0 0 30px rgba(212,175,55,0.14) !important;
+        }
+        .oc-card .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading), serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--white);
+            background: linear-gradient(150deg, var(--navy), var(--violet));
+            border: 4px solid var(--gold);
+            transition: border-color 0.3s;
+            animation: float 3.8s ease-in-out infinite;
+        }
+        .oc-card:nth-child(2) .avatar { animation-delay: 0.15s; }
+        .oc-card:nth-child(3) .avatar { animation-delay: 0.3s; }
+        .oc-card:nth-child(4) .avatar { animation-delay: 0.45s; }
+        .oc-card:nth-child(5) .avatar { animation-delay: 0.6s; }
+        .oc-card:nth-child(6) .avatar { animation-delay: 0.75s; }
+        .oc-card:nth-child(7) .avatar { animation-delay: 0.9s; }
+        .oc-card:nth-child(8) .avatar { animation-delay: 1.05s; }
+        .oc-card:hover .avatar {
+            border-color: var(--gold-light);
+        }
+        .oc-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+        .oc-card .position {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .oc-card .expand-hint {
+            color: var(--gray);
+            font-size: 0.75rem;
+            margin-top: 14px;
+            opacity: 0.55;
+            transition: 0.3s;
+        }
+        .oc-card:hover .expand-hint {
+            opacity: 1;
+            color: var(--gold-light);
+        }
+    </style>
+</head>
+<body>
+<!-- Decorative wavy background lines — built dynamically in script.js so they tile seamlessly -->
+<div class="wave-bg" id="waveBg" aria-hidden="true"></div>
+
+<!-- Loading screen: book-reveal transition, removes itself once the page has loaded -->
+<noscript><style>#loader{display:none !important;}</style></noscript>
+<div id="loader">
+    <div class="loader-half left"></div>
+    <div class="loader-half right"></div>
+    <div class="loader-center">
+        <div class="loader-logo-ring">
+            <img src="logo.png" alt="NewMUN" />
+        </div>
+        <div class="loader-text">NewMUN 2026</div>
+        <div class="loader-tagline" id="loaderTagline">Assembling delegates</div>
+        <div class="loader-progress"><div class="loader-progress-fill" id="loaderProgressFill"></div></div>
+    </div>
+</div>
+
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="NewMUN Logo" />
+            <span>
+                NewMUN
+                <small>2026 · Bahrain</small>
+            </span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="councils.html">Councils</a></li>
+            <li><a href="oc.html" class="active">OC</a></li>
+            <li><a href="faq-resources.html">FAQ & Resources</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+            <li><a href="register.html" class="btn-outline">Register</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<header class="page-header">
+    <div class="container">
+        <h1>Organizing <span class="highlight">Committee</span></h1>
+        <p>The student leaders behind NewMUN 2026. Click on any card to learn more.</p>
+    </div>
+    <svg class="page-header-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,26 C240,60 480,0 720,24 C960,48 1200,6 1440,30 L1440,60 L0,60 Z" fill="var(--navy)"></path>
+    </svg>
+</header>
+
+<!-- ===== OC ===== -->
+<section>
+    <div class="container">
+        <div class="oc-grid tilt-wrap reveal-stagger">
+            <!-- Member 1 -->
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-1')">
+                <div class="avatar">AK</div>
+                <h3>Aarav Kumar</h3>
+                <div class="position">Secretary-General</div>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-2')">
+                <div class="avatar">SN</div>
+                <h3>Sara Nasser</h3>
+                <div class="position">Deputy Secretary-General</div>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-3')">
+                <div class="avatar">MA</div>
+                <h3>Mohammed Al-Ali</h3>
+                <div class="position">Director of Committees</div>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-4')">
+                <div class="avatar">LR</div>
+                <h3>Leena Rahman</h3>
+                <div class="position">Head of Logistics</div>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <!-- Member 5 -->
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-5')">
+                <div class="avatar">KA</div>
+                <h3>Khalid Al-Faisal</h3>
+                <div class="position">Head of Media</div>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <!-- Member 6 -->
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-6')">
+                <div class="avatar">FM</div>
+                <h3>Fatima Mirza</h3>
+                <div class="position">Head of Outreach</div>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <!-- Member 7 -->
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-7')">
+                <div class="avatar">AA</div>
+                <h3>Ali Al-Amin</h3>
+                <div class="position">Head of Design</div>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <!-- Member 8 -->
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-8')">
+                <div class="avatar">NA</div>
+                <h3>Nora Al-Khalifa</h3>
+                <div class="position">Head of Finance</div>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" style="padding:48px 0 32px;">
+    <div class="container">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;">
+            <div>
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                    <img src="logo.png" alt="NewMUN Logo" style="width:44px;height:44px;border-radius:50%;border:2px solid var(--gold);object-fit:contain;" />
+                    <span style="font-weight:800;font-size:1.2rem;color:var(--white);font-family:var(--font-heading),serif;">
+                        NewMUN <span style="color:var(--gold);">2026</span>
+                    </span>
+                </div>
+                <p style="font-size:0.9rem;max-width:280px;">
+                    New Indian School Bahrain's premier Model UN conference.
+                    Empowering youth diplomacy since 2018.
+                </p>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Quick Links</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:8px;"><a href="index.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Home</a></li>
+                    <li style="margin-bottom:8px;"><a href="councils.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Councils</a></li>
+                    <li style="margin-bottom:8px;"><a href="oc.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">OC</a></li>
+                    <li style="margin-bottom:8px;"><a href="faq-resources.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">FAQ & Resources</a></li>
+                    <li style="margin-bottom:8px;"><a href="gallery.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Gallery</a></li>
+                    <li style="margin-bottom:8px;"><a href="sponsors.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Sponsors</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Contact</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:8px;"><a href="mailto:newmun@nisbh.com" style="font-size:0.9rem;"><i class="fas fa-envelope"></i> newmun@nisbh.com</a></li>
+                    <li style="margin-bottom:8px;"><a href="#" style="font-size:0.9rem;"><i class="fas fa-phone"></i> +973 1700 0000</a></li>
+                    <li style="margin-bottom:8px;"><a href="#" style="font-size:0.9rem;"><i class="fas fa-map-marker-alt"></i> New Indian School, Bahrain</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Follow Us</h4>
+                <div style="display:flex;gap:14px;">
+                    <a href="https://www.instagram.com/newmun.bh" target="_blank" rel="noopener" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p style="font-size:0.8rem;margin-top:16px;color:rgba(255,255,255,0.3);">
+                    #NewMUN2026
+                </p>
+            </div>
+        </div>
+        <div style="grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;margin-top:12px;text-align:center;font-size:0.85rem;">
+            &copy; 2026 NewMUN · New Indian School Bahrain. All rights reserved.
+            <span style="display:block;font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:4px;">
+                Built with <i class="fas fa-heart" style="color:var(--gold);"></i> for diplomacy
+            </span>
+        </div>
+    </div>
+</footer>
+
+<!-- KNOW MORE / BIO MODALS — fixes the old inline-expand layout bug -->
+<div class="modal-overlay" id="modal-oc-1">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-1')"><i class="fas fa-times"></i></button>
+        <h3>Aarav Kumar</h3>
+        <div class="modal-subtitle">Secretary-General</div>
+        <p>Aarav is a Grade 12 student with 4 years of MUN experience. He has chaired UNSC at NewMUN 2025 and was Best Delegate at BMUNIS 2025.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-2">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-2')"><i class="fas fa-times"></i></button>
+        <h3>Sara Nasser</h3>
+        <div class="modal-subtitle">Deputy Secretary-General</div>
+        <p>Sara is a passionate debater and former Head of Media for NewMUN 2025. She specializes in international law and human rights advocacy.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-3">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-3')"><i class="fas fa-times"></i></button>
+        <h3>Mohammed Al-Ali</h3>
+        <div class="modal-subtitle">Director of Committees</div>
+        <p>Mohammed has chaired 5 MUN conferences across Bahrain. He brings expertise in global governance and is a former President of the Student Council.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-4">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-4')"><i class="fas fa-times"></i></button>
+        <h3>Leena Rahman</h3>
+        <div class="modal-subtitle">Head of Logistics</div>
+        <p>Leena ensures seamless conference operations. She managed logistics for 400+ delegates at NewMUN 2025 and is known for her organizational prowess.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-5">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-5')"><i class="fas fa-times"></i></button>
+        <h3>Khalid Al-Faisal</h3>
+        <div class="modal-subtitle">Head of Media</div>
+        <p>Khalid leads the media team covering the conference. An aspiring filmmaker, he created the official NewMUN 2025 highlight video.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-6">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-6')"><i class="fas fa-times"></i></button>
+        <h3>Fatima Mirza</h3>
+        <div class="modal-subtitle">Head of Outreach</div>
+        <p>Fatima manages school relations and delegate recruitment. She has brought in 15+ schools to participate in NewMUN 2026.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-7">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-7')"><i class="fas fa-times"></i></button>
+        <h3>Ali Al-Amin</h3>
+        <div class="modal-subtitle">Head of Design</div>
+        <p>Ali is the creative force behind NewMUN's visual identity. He designed the 2026 logo, banners, and all conference materials.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-8">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-8')"><i class="fas fa-times"></i></button>
+        <h3>Nora Al-Khalifa</h3>
+        <div class="modal-subtitle">Head of Finance</div>
+        <p>Nora manages the conference budget and sponsorship relations. She secured partnerships with 5 major sponsors for NewMUN 2026.</p>
+    </div>
+</div>
+
+<!-- ===== THEME LAB — live customizer, try colors/gradients/glass/fonts on the real site ===== -->
+<button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+<button id="themeLabToggle" title="Theme Lab"><i class="fas fa-palette"></i></button>
+<div id="themeLabDrawer">
+    <h4>Theme Lab <button class="tl-close-btn" id="tlCloseBtn"><i class="fas fa-times"></i></button></h4>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-fill-drip"></i> Gradient Colors</div>
+        <div class="tl-row"><label>Color 1</label><input type="color" id="tlNavy" value="#0A1128" /></div>
+        <div class="tl-row"><label>Color 2</label><input type="color" id="tlNavy2" value="#150f30" /></div>
+        <div class="tl-row"><label>Color 3</label><input type="color" id="tlViolet" value="#3a1768" /></div>
+        <div class="tl-row"><label>Color 4</label><input type="color" id="tlViolet2" value="#5b2a9e" /></div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-star"></i> Accent</div>
+        <div class="tl-row"><label>Gold</label><input type="color" id="tlGold" value="#D4AF37" /></div>
+        <div class="tl-row"><label>Gold Light</label><input type="color" id="tlGoldLight" value="#f0d78c" /></div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-arrows-alt"></i> Gradient Angle</div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Angle</span><span id="tlAngleVal">125°</span></div>
+            <input type="range" id="tlAngle" min="0" max="360" value="125" />
+        </div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-blender"></i> Glass Depth</div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Blur</span><span id="tlBlurVal">20px</span></div>
+            <input type="range" id="tlBlur" min="4" max="40" value="20" />
+        </div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Opacity</span><span id="tlOpacityVal">5.5%</span></div>
+            <input type="range" id="tlOpacity" min="0" max="20" value="5.5" step="0.5" />
+        </div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-font"></i> Font Pairing</div>
+        <select id="tlFontPair">
+            <option value="playfair-inter">Playfair Display + Inter</option>
+            <option value="cormorant-manrope">Cormorant Garamond + Manrope</option>
+            <option value="fraunces-work">Fraunces + Work Sans</option>
+            <option value="marcellus-jost">Marcellus + Jost</option>
+            <option value="baskerville-source">Libre Baskerville + Source Sans Pro</option>
+            <option value="bodoni-dm">Bodoni Moda + DM Sans</option>
+        </select>
+    </div>
+
+    <button class="tl-reset-btn" id="tlReset"><i class="fas fa-undo"></i> Reset to Default</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

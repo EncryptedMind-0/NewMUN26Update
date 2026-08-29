@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NewMUN 2026 | Sponsors</title>
+
+    <!-- Social share preview (Open Graph + Twitter Card).
+         Replace YOUR-DOMAIN-HERE with your real domain once the site is deployed,
+         so shared links on WhatsApp/Instagram/Twitter show the logo + description correctly. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sponsors | NewMUN 2026" />
+    <meta property="og:description" content="Meet our sponsors and partners, and learn how your organization can support NewMUN 2026." />
+    <meta property="og:image" content="https://YOUR-DOMAIN-HERE.com/logo.png" />
+    <meta property="og:url" content="https://YOUR-DOMAIN-HERE.com/sponsors.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sponsors | NewMUN 2026" />
+    <meta name="twitter:description" content="Meet our sponsors and partners, and learn how your organization can support NewMUN 2026." />
+    <meta name="twitter:image" content="https://YOUR-DOMAIN-HERE.com/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Browser tab icon (proper sizes generated from the NewMUN logo) -->
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .tier-group + .tier-group {
+            margin-top: 64px;
+        }
+        .tier-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+        .tier-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+        .tier-badge.platinum { color: var(--gold-light); }
+        .tier-badge.gold { color: var(--gold); }
+        .tier-badge.silver { color: rgba(255,255,255,0.75); }
+        .tier-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--glass-border), transparent);
+        }
+
+        .sponsor-grid {
+            display: grid;
+            gap: 24px;
+        }
+        .sponsor-grid.platinum { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .sponsor-grid.gold { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+        .sponsor-grid.silver { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+
+        .sponsor-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border-radius: 18px;
+            padding: 32px 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .sponsor-card:hover {
+            border-color: rgba(212,175,55,0.4);
+            box-shadow: var(--shadow-lg), 0 0 28px rgba(212,175,55,0.14) !important;
+        }
+        .sponsor-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(150deg, var(--navy), var(--violet));
+            border: 3px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading), serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+        .sponsor-grid.silver .sponsor-logo {
+            width: 64px;
+            height: 64px;
+            font-size: 1.1rem;
+            border-width: 2px;
+        }
+        .sponsor-card h4 {
+            font-size: 1.05rem;
+        }
+        .sponsor-grid.silver .sponsor-card h4 {
+            font-size: 0.9rem;
+        }
+        .sponsor-card p {
+            color: var(--gray);
+            font-size: 0.82rem;
+        }
+
+        /* ===== BECOME A SPONSOR ===== */
+        .sponsor-cta {
+            background: linear-gradient(150deg, var(--navy) 0%, var(--navy-2) 55%, var(--violet) 130%);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(22px) saturate(150%);
+            -webkit-backdrop-filter: blur(22px) saturate(150%);
+            border-radius: 28px;
+            padding: 56px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .sponsor-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 85% 15%, rgba(212,175,55,0.16), transparent 55%);
+        }
+        .sponsor-cta > * { position: relative; z-index: 1; }
+
+        .perk-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 32px 0 36px;
+        }
+        .perk-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(16px);
+            border-radius: 16px;
+            padding: 22px 18px;
+            text-align: center;
+        }
+        .perk-item i {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .perk-item h4 {
+            font-family: var(--font-body), sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .perk-item p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.55);
+        }
+
+        @media (max-width: 900px) {
+            .perk-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 640px) {
+            .sponsor-cta { padding: 34px 22px; }
+            .perk-grid { grid-template-columns: 1fr; }
+            .tier-header { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+<!-- Decorative wavy background lines — built dynamically in script.js so they tile seamlessly -->
+<div class="wave-bg" id="waveBg" aria-hidden="true"></div>
+
+<!-- Loading screen: book-reveal transition, removes itself once the page has loaded -->
+<noscript><style>#loader{display:none !important;}</style></noscript>
+<div id="loader">
+    <div class="loader-half left"></div>
+    <div class="loader-half right"></div>
+    <div class="loader-center">
+        <div class="loader-logo-ring">
+            <img src="logo.png" alt="NewMUN" />
+        </div>
+        <div class="loader-text">NewMUN 2026</div>
+        <div class="loader-tagline" id="loaderTagline">Assembling delegates</div>
+        <div class="loader-progress"><div class="loader-progress-fill" id="loaderProgressFill"></div></div>
+    </div>
+</div>
+
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="NewMUN Logo" />
+            <span>
+                NewMUN
+                <small>2026 · Bahrain</small>
+            </span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="councils.html">Councils</a></li>
+            <li><a href="oc.html">OC</a></li>
+            <li><a href="faq-resources.html">FAQ & Resources</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="sponsors.html" class="active">Sponsors</a></li>
+            <li><a href="register.html" class="btn-outline">Register</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<header class="page-header">
+    <div class="container">
+        <h1>Our <span class="highlight">Sponsors</span></h1>
+        <p>NewMUN 2026 is made possible by the generosity of our partners.</p>
+    </div>
+    <svg class="page-header-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,26 C240,60 480,0 720,24 C960,48 1200,6 1440,30 L1440,60 L0,60 Z" fill="var(--navy)"></path>
+    </svg>
+</header>
+
+<!--
+    SPONSOR LOGOS — HOW TO ADD YOUR OWN
+    =====================================
+    Each .sponsor-logo below is a placeholder circle with initials. To swap in a real logo:
+      1. Save the sponsor's logo file into an "images/sponsors/" folder next to this HTML file.
+      2. Replace the placeholder text inside .sponsor-logo with an <img> tag, e.g.:
+         <div class="sponsor-logo" style="background:#fff;">
+             <img src="images/sponsors/acme-corp.png" alt="Acme Corp" style="width:70%;object-fit:contain;" />
+         </div>
+      3. Duplicate a .sponsor-card block for each additional sponsor in that tier.
+      4. All names below (Gulf Capital Group, Bahrain Holdings, etc.) are PLACEHOLDERS — replace with your real sponsors.
+-->
+
+<!-- ===== SPONSOR TIERS ===== -->
+<section>
+    <div class="container">
+
+        <!-- PLATINUM -->
+        <div class="tier-group reveal">
+            <div class="tier-header">
+                <span class="tier-badge platinum"><i class="fas fa-crown"></i> Platinum</span>
+                <div class="tier-line"></div>
+            </div>
+            <div class="sponsor-grid platinum tilt-wrap reveal-stagger">
+                <div class="sponsor-card tilt-card stagger-child">
+                    <div class="sponsor-logo">GC</div>
+                    <h4>Gulf Capital Group</h4>
+                    <p>Presenting Sponsor</p>
+                </div>
+                <div class="sponsor-card tilt-card stagger-child">
+                    <div class="sponsor-logo">BH</div>
+                    <h4>Bahrain Holdings</h4>
+                    <p>Presenting Sponsor</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- GOLD -->
+        <div class="tier-group">
+            <div class="tier-header reveal">
+                <span class="tier-badge gold"><i class="fas fa-medal"></i> Gold</span>
+                <div class="tier-line"></div>
+            </div>
+            <div class="sponsor-grid gold tilt-wrap reveal-stagger">
+                <div class="sponsor-card tilt-card stagger-child">
+                    <div class="sponsor-logo">AF</div>
+                    <h4>Al Faisal Trading</h4>
+                    <p>Gold Sponsor</p>
+                </div>
+                <div class="sponsor-card tilt-card stagger-child">
+                    <div class="sponsor-logo">PB</div>
+                    <h4>Pearl Bank</h4>
+                    <p>Gold Sponsor</p>
+                </div>
+                <div class="sponsor-card tilt-card stagger-child">
+                    <div class="sponsor-logo">MC</div>
+                    <h4>Manama Consulting</h4>
+                    <p>Gold Sponsor</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SILVER -->
+        <div class="tier-group">
+            <div class="tier-header reveal">
+                <span class="tier-badge silver"><i class="fas fa-award"></i> Silver</span>
+                <div class="tier-line"></div>
+            </div>
+            <div class="sponsor-grid silver tilt-wrap reveal-stagger">
+                <div class="sponsor-card tilt-card stagger-child">
+                    <div class="sponsor-logo">RC</div>
+                    <h4>Riffa Cafe</h4>
+                </div>
+                <div class="sponsor-card tilt-card stagger-child">
+                    <div class="sponsor-logo">IT</div>
+                    <h4>Isa Town Print</h4>
+                </div>
+                <div class="sponsor-card tilt-card stagger-child">
+                    <div class="sponsor-logo">SB</div>
+                    <h4>Seef Books</h4>
+                </div>
+                <div class="sponsor-card tilt-card stagger-child">
+                    <div class="sponsor-logo">DM</div>
+                    <h4>Diplomat Media</h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== BECOME A SPONSOR ===== -->
+<section id="become-sponsor">
+    <div class="container">
+        <div class="sponsor-cta reveal">
+            <div class="section-title-center">
+                <span class="eyebrow"><i class="fas fa-handshake"></i> Partner With Us</span>
+                <h2 class="section-title">Become a <span class="highlight">Sponsor</span></h2>
+                <p class="section-subtitle" style="margin:0 auto;color:rgba(255,255,255,0.6);">
+                    Reach 400+ engaged students, parents, and educators from across Bahrain's leading schools.
+                </p>
+            </div>
+
+            <div class="perk-grid tilt-wrap reveal-stagger">
+                <div class="perk-item tilt-card stagger-child">
+                    <i class="fas fa-bullhorn"></i>
+                    <h4>Brand Visibility</h4>
+                    <p>Logo placement on the website, banners, and delegate materials.</p>
+                </div>
+                <div class="perk-item tilt-card stagger-child">
+                    <i class="fas fa-users"></i>
+                    <h4>Direct Access</h4>
+                    <p>Connect with 400+ delegates, parents, and 20+ partner schools.</p>
+                </div>
+                <div class="perk-item tilt-card stagger-child">
+                    <i class="fas fa-newspaper"></i>
+                    <h4>Media Coverage</h4>
+                    <p>Featured mentions across our press releases and social channels.</p>
+                </div>
+            </div>
+
+            <div style="text-align:center;">
+                <a href="mailto:newmun@nisbh.com?subject=NewMUN%202026%20Sponsorship%20Inquiry" class="btn-primary btn-glow">
+                    <i class="fas fa-envelope"></i> Enquire About Sponsorship
+                </a>
+                <p style="font-size:0.85rem;color:rgba(255,255,255,0.45);margin-top:18px;">
+                    Ask us for our full sponsorship prospectus and tier pricing.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" style="padding:48px 0 32px;">
+    <div class="container">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;">
+            <div>
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                    <img src="logo.png" alt="NewMUN Logo" style="width:44px;height:44px;border-radius:50%;border:2px solid var(--gold);object-fit:contain;" />
+                    <span style="font-weight:800;font-size:1.2rem;color:var(--white);font-family:var(--font-heading),serif;">
+                        NewMUN <span style="color:var(--gold);">2026</span>
+                    </span>
+                </div>
+                <p style="font-size:0.9rem;max-width:280px;">
+                    New Indian School Bahrain's premier Model UN conference.
+                    Empowering youth diplomacy since 2018.
+                </p>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Quick Links</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:8px;"><a href="index.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Home</a></li>
+                    <li style="margin-bottom:8px;"><a href="councils.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Councils</a></li>
+                    <li style="margin-bottom:8px;"><a href="oc.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">OC</a></li>
+                    <li style="margin-bottom:8px;"><a href="faq-resources.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">FAQ & Resources</a></li>
+                    <li style="margin-bottom:8px;"><a href="gallery.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Gallery</a></li>
+                    <li style="margin-bottom:8px;"><a href="sponsors.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Sponsors</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Contact</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:8px;"><a href="mailto:newmun@nisbh.com" style="font-size:0.9rem;"><i class="fas fa-envelope"></i> newmun@nisbh.com</a></li>
+                    <li style="margin-bottom:8px;"><a href="#" style="font-size:0.9rem;"><i class="fas fa-phone"></i> +973 1700 0000</a></li>
+                    <li style="margin-bottom:8px;"><a href="#" style="font-size:0.9rem;"><i class="fas fa-map-marker-alt"></i> New Indian School, Bahrain</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Follow Us</h4>
+                <div style="display:flex;gap:14px;">
+                    <a href="https://www.instagram.com/newmun.bh" target="_blank" rel="noopener" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p style="font-size:0.8rem;margin-top:16px;color:rgba(255,255,255,0.3);">
+                    #NewMUN2026
+                </p>
+            </div>
+        </div>
+        <div style="grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;margin-top:12px;text-align:center;font-size:0.85rem;">
+            &copy; 2026 NewMUN · New Indian School Bahrain. All rights reserved.
+            <span style="display:block;font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:4px;">
+                Built with <i class="fas fa-heart" style="color:var(--gold);"></i> for diplomacy
+            </span>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== THEME LAB — live customizer, try colors/gradients/glass/fonts on the real site ===== -->
+<button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+<button id="themeLabToggle" title="Theme Lab"><i class="fas fa-palette"></i></button>
+<div id="themeLabDrawer">
+    <h4>Theme Lab <button class="tl-close-btn" id="tlCloseBtn"><i class="fas fa-times"></i></button></h4>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-fill-drip"></i> Gradient Colors</div>
+        <div class="tl-row"><label>Color 1</label><input type="color" id="tlNavy" value="#0A1128" /></div>
+        <div class="tl-row"><label>Color 2</label><input type="color" id="tlNavy2" value="#150f30" /></div>
+        <div class="tl-row"><label>Color 3</label><input type="color" id="tlViolet" value="#3a1768" /></div>
+        <div class="tl-row"><label>Color 4</label><input type="color" id="tlViolet2" value="#5b2a9e" /></div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-star"></i> Accent</div>
+        <div class="tl-row"><label>Gold</label><input type="color" id="tlGold" value="#D4AF37" /></div>
+        <div class="tl-row"><label>Gold Light</label><input type="color" id="tlGoldLight" value="#f0d78c" /></div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-arrows-alt"></i> Gradient Angle</div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Angle</span><span id="tlAngleVal">125°</span></div>
+            <input type="range" id="tlAngle" min="0" max="360" value="125" />
+        </div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-blender"></i> Glass Depth</div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Blur</span><span id="tlBlurVal">20px</span></div>
+            <input type="range" id="tlBlur" min="4" max="40" value="20" />
+        </div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Opacity</span><span id="tlOpacityVal">5.5%</span></div>
+            <input type="range" id="tlOpacity" min="0" max="20" value="5.5" step="0.5" />
+        </div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-font"></i> Font Pairing</div>
+        <select id="tlFontPair">
+            <option value="playfair-inter">Playfair Display + Inter</option>
+            <option value="cormorant-manrope">Cormorant Garamond + Manrope</option>
+            <option value="fraunces-work">Fraunces + Work Sans</option>
+            <option value="marcellus-jost">Marcellus + Jost</option>
+            <option value="baskerville-source">Libre Baskerville + Source Sans Pro</option>
+            <option value="bodoni-dm">Bodoni Moda + DM Sans</option>
+        </select>
+    </div>
+
+    <button class="tl-reset-btn" id="tlReset"><i class="fas fa-undo"></i> Reset to Default</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

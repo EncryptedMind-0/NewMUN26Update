@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found | NewMUN 2026</title>
+
+    <!-- Social share preview (Open Graph + Twitter Card).
+         Replace YOUR-DOMAIN-HERE with your real domain once the site is deployed,
+         so shared links on WhatsApp/Instagram/Twitter show the logo + description correctly. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Page Not Found | NewMUN 2026" />
+    <meta property="og:description" content="This page has left the committee room. Head back to NewMUN 2026." />
+    <meta property="og:image" content="https://YOUR-DOMAIN-HERE.com/logo.png" />
+    <meta property="og:url" content="https://YOUR-DOMAIN-HERE.com/404.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Page Not Found | NewMUN 2026" />
+    <meta name="twitter:description" content="This page has left the committee room. Head back to NewMUN 2026." />
+    <meta name="twitter:image" content="https://YOUR-DOMAIN-HERE.com/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Browser tab icon (proper sizes generated from the NewMUN logo) -->
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .error-section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 0 80px;
+        }
+        .error-card {
+            max-width: 620px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            border-radius: 28px;
+            padding: 64px 44px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        .error-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 75% 15%, rgba(212,175,55,0.14), transparent 55%);
+        }
+        .error-card > * { position: relative; z-index: 1; }
+        .error-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 18px;
+            animation: float 3.4s ease-in-out infinite;
+        }
+        .error-code {
+            font-family: var(--font-heading), serif;
+            font-size: 5rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+        .error-code span { color: var(--gold); font-style: italic; }
+        .error-card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+        .error-card p {
+            color: var(--gray);
+            font-size: 1rem;
+            margin-bottom: 32px;
+            max-width: 420px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .error-ctas {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+        .error-links {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+        }
+        .error-links a {
+            color: rgba(255,255,255,0.55);
+            transition: color 0.2s;
+        }
+        .error-links a:hover { color: var(--gold); }
+    </style>
+</head>
+<body>
+<!-- Decorative wavy background lines — built dynamically in script.js so they tile seamlessly -->
+<div class="wave-bg" id="waveBg" aria-hidden="true"></div>
+
+<!-- Loading screen: book-reveal transition, removes itself once the page has loaded -->
+<noscript><style>#loader{display:none !important;}</style></noscript>
+<div id="loader">
+    <div class="loader-half left"></div>
+    <div class="loader-half right"></div>
+    <div class="loader-center">
+        <div class="loader-logo-ring">
+            <img src="logo.png" alt="NewMUN" />
+        </div>
+        <div class="loader-text">NewMUN 2026</div>
+        <div class="loader-tagline" id="loaderTagline">Assembling delegates</div>
+        <div class="loader-progress"><div class="loader-progress-fill" id="loaderProgressFill"></div></div>
+    </div>
+</div>
+
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="NewMUN Logo" />
+            <span>
+                NewMUN
+                <small>2026 · Bahrain</small>
+            </span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="councils.html">Councils</a></li>
+            <li><a href="oc.html">OC</a></li>
+            <li><a href="faq-resources.html">FAQ & Resources</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+            <li><a href="register.html" class="btn-outline">Register</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== 404 ===== -->
+<section class="error-section">
+    <div class="container">
+        <div class="error-card reveal visible">
+            <div class="error-icon"><i class="fas fa-gavel"></i></div>
+            <div class="error-code">4<span>0</span>4</div>
+            <h2>This page has left the committee room</h2>
+            <p>The page you're looking for has been moved, renamed, or never existed on the floor. Let's get you back on the agenda.</p>
+            <div class="error-ctas">
+                <a href="index.html" class="btn-primary btn-glow">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+                <a href="faq-resources.html" class="btn-outline">
+                    Visit FAQ <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="error-links">
+                <a href="councils.html">Councils</a>
+                <a href="oc.html">OC</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="register.html">Register</a>
+                <a href="sponsors.html">Sponsors</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" style="padding:48px 0 32px;">
+    <div class="container">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;">
+            <div>
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                    <img src="logo.png" alt="NewMUN Logo" style="width:44px;height:44px;border-radius:50%;border:2px solid var(--gold);object-fit:contain;" />
+                    <span style="font-weight:800;font-size:1.2rem;color:var(--white);font-family:var(--font-heading),serif;">
+                        NewMUN <span style="color:var(--gold);">2026</span>
+                    </span>
+                </div>
+                <p style="font-size:0.9rem;max-width:280px;">
+                    New Indian School Bahrain's premier Model UN conference.
+                    Empowering youth diplomacy since 2018.
+                </p>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Quick Links</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:8px;"><a href="index.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Home</a></li>
+                    <li style="margin-bottom:8px;"><a href="councils.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Councils</a></li>
+                    <li style="margin-bottom:8px;"><a href="oc.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">OC</a></li>
+                    <li style="margin-bottom:8px;"><a href="faq-resources.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">FAQ & Resources</a></li>
+                    <li style="margin-bottom:8px;"><a href="gallery.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Gallery</a></li>
+                    <li style="margin-bottom:8px;"><a href="sponsors.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Sponsors</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Contact</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:8px;"><a href="mailto:newmun@nisbh.com" style="font-size:0.9rem;"><i class="fas fa-envelope"></i> newmun@nisbh.com</a></li>
+                    <li style="margin-bottom:8px;"><a href="#" style="font-size:0.9rem;"><i class="fas fa-phone"></i> +973 1700 0000</a></li>
+                    <li style="margin-bottom:8px;"><a href="#" style="font-size:0.9rem;"><i class="fas fa-map-marker-alt"></i> New Indian School, Bahrain</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Follow Us</h4>
+                <div style="display:flex;gap:14px;">
+                    <a href="https://www.instagram.com/newmun.bh" target="_blank" rel="noopener" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p style="font-size:0.8rem;margin-top:16px;color:rgba(255,255,255,0.3);">
+                    #NewMUN2026
+                </p>
+            </div>
+        </div>
+        <div style="grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;margin-top:12px;text-align:center;font-size:0.85rem;">
+            &copy; 2026 NewMUN · New Indian School Bahrain. All rights reserved.
+            <span style="display:block;font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:4px;">
+                Built with <i class="fas fa-heart" style="color:var(--gold);"></i> for diplomacy
+            </span>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== THEME LAB — live customizer, try colors/gradients/glass/fonts on the real site ===== -->
+<button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+<button id="themeLabToggle" title="Theme Lab"><i class="fas fa-palette"></i></button>
+<div id="themeLabDrawer">
+    <h4>Theme Lab <button class="tl-close-btn" id="tlCloseBtn"><i class="fas fa-times"></i></button></h4>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-fill-drip"></i> Gradient Colors</div>
+        <div class="tl-row"><label>Color 1</label><input type="color" id="tlNavy" value="#0A1128" /></div>
+        <div class="tl-row"><label>Color 2</label><input type="color" id="tlNavy2" value="#150f30" /></div>
+        <div class="tl-row"><label>Color 3</label><input type="color" id="tlViolet" value="#3a1768" /></div>
+        <div class="tl-row"><label>Color 4</label><input type="color" id="tlViolet2" value="#5b2a9e" /></div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-star"></i> Accent</div>
+        <div class="tl-row"><label>Gold</label><input type="color" id="tlGold" value="#D4AF37" /></div>
+        <div class="tl-row"><label>Gold Light</label><input type="color" id="tlGoldLight" value="#f0d78c" /></div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-arrows-alt"></i> Gradient Angle</div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Angle</span><span id="tlAngleVal">125°</span></div>
+            <input type="range" id="tlAngle" min="0" max="360" value="125" />
+        </div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-blender"></i> Glass Depth</div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Blur</span><span id="tlBlurVal">20px</span></div>
+            <input type="range" id="tlBlur" min="4" max="40" value="20" />
+        </div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Opacity</span><span id="tlOpacityVal">5.5%</span></div>
+            <input type="range" id="tlOpacity" min="0" max="20" value="5.5" step="0.5" />
+        </div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-font"></i> Font Pairing</div>
+        <select id="tlFontPair">
+            <option value="playfair-inter">Playfair Display + Inter</option>
+            <option value="cormorant-manrope">Cormorant Garamond + Manrope</option>
+            <option value="fraunces-work">Fraunces + Work Sans</option>
+            <option value="marcellus-jost">Marcellus + Jost</option>
+            <option value="baskerville-source">Libre Baskerville + Source Sans Pro</option>
+            <option value="bodoni-dm">Bodoni Moda + DM Sans</option>
+        </select>
+    </div>
+
+    <button class="tl-reset-btn" id="tlReset"><i class="fas fa-undo"></i> Reset to Default</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

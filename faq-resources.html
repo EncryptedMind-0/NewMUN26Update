@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NewMUN 2026 | FAQ & Resources</title>
+
+    <!-- Social share preview (Open Graph + Twitter Card).
+         Replace YOUR-DOMAIN-HERE with your real domain once the site is deployed,
+         so shared links on WhatsApp/Instagram/Twitter show the logo + description correctly. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="FAQ & Resources | NewMUN 2026" />
+    <meta property="og:description" content="Everything you need to know about NewMUN 2026 — registration, dress code, background guides, and venue directions." />
+    <meta property="og:image" content="https://YOUR-DOMAIN-HERE.com/logo.png" />
+    <meta property="og:url" content="https://YOUR-DOMAIN-HERE.com/faq-resources.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FAQ & Resources | NewMUN 2026" />
+    <meta name="twitter:description" content="Everything you need to know about NewMUN 2026 — registration, dress code, background guides, and venue directions." />
+    <meta name="twitter:image" content="https://YOUR-DOMAIN-HERE.com/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Browser tab icon (proper sizes generated from the NewMUN logo) -->
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* ===== PAGE TABLE OF CONTENTS (left sidebar, desktop only) ===== */
+        .page-toc {
+            position: fixed;
+            left: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 500;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border-radius: 16px;
+            padding: 16px 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            box-shadow: var(--shadow);
+        }
+        .page-toc a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: 0.25s var(--ease);
+        }
+        .page-toc a .toc-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            flex-shrink: 0;
+        }
+        .page-toc a:hover {
+            color: var(--white);
+            background: rgba(255,255,255,0.06);
+        }
+        .page-toc a.active {
+            color: var(--gold);
+            background: rgba(212,175,55,0.12);
+        }
+        @media (max-width: 1240px) {
+            .page-toc { display: none; }
+        }
+        .faq-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease), border-color 0.3s var(--ease);
+        }
+        .faq-item:hover {
+            border-color: rgba(212,175,55,0.35);
+            box-shadow: var(--shadow-lg);
+            transform: translateX(4px);
+        }
+        .faq-item .question {
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item .question i {
+            color: var(--gold);
+            transition: 0.3s;
+        }
+        .faq-item .answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: 0.35s ease;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        .faq-item.active .answer {
+            max-height: 200px;
+            padding-top: 12px;
+        }
+        .faq-item.active .question i {
+            transform: rotate(180deg);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .resource-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border: 2px solid var(--glass-border);
+        }
+        .resource-card:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-lg), 0 0 30px rgba(212,175,55,0.14) !important;
+        }
+        .resource-card .icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .resource-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .resource-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+        .resource-card .file-size {
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-top: 8px;
+        }
+
+        /* ===== VENUE MAP ===== */
+        .venue-box {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 0;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .venue-map {
+            min-height: 360px;
+            background: rgba(0,0,0,0.2);
+        }
+        .venue-map iframe {
+            display: block;
+            filter: grayscale(0.15) contrast(1.05);
+        }
+        .venue-details {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .venue-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .venue-details p {
+            color: var(--gray);
+        }
+        @media (max-width: 900px) {
+            .venue-box {
+                grid-template-columns: 1fr;
+            }
+            .venue-map {
+                min-height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Decorative wavy background lines — built dynamically in script.js so they tile seamlessly -->
+<div class="wave-bg" id="waveBg" aria-hidden="true"></div>
+
+<!-- Loading screen: book-reveal transition, removes itself once the page has loaded -->
+<noscript><style>#loader{display:none !important;}</style></noscript>
+<div id="loader">
+    <div class="loader-half left"></div>
+    <div class="loader-half right"></div>
+    <div class="loader-center">
+        <div class="loader-logo-ring">
+            <img src="logo.png" alt="NewMUN" />
+        </div>
+        <div class="loader-text">NewMUN 2026</div>
+        <div class="loader-tagline" id="loaderTagline">Assembling delegates</div>
+        <div class="loader-progress"><div class="loader-progress-fill" id="loaderProgressFill"></div></div>
+    </div>
+</div>
+
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="NewMUN Logo" />
+            <span>
+                NewMUN
+                <small>2026 · Bahrain</small>
+            </span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="councils.html">Councils</a></li>
+            <li><a href="oc.html">OC</a></li>
+            <li><a href="faq-resources.html" class="active">FAQ & Resources</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+            <li><a href="register.html" class="btn-outline">Register</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<header class="page-header">
+    <div class="container">
+        <h1>FAQ &amp; <span class="highlight">Resources</span></h1>
+        <p>Everything you need to know about NewMUN 2026.</p>
+    </div>
+    <svg class="page-header-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,26 C240,60 480,0 720,24 C960,48 1200,6 1440,30 L1440,60 L0,60 Z" fill="var(--navy)"></path>
+    </svg>
+</header>
+
+<!-- Page index / table of contents — desktop only, tracks scroll position -->
+<nav class="page-toc" id="pageToc">
+    <a href="#faq" class="active"><span class="toc-dot"></span> FAQ</a>
+    <a href="#resources"><span class="toc-dot"></span> Resources</a>
+    <a href="#venue"><span class="toc-dot"></span> Venue</a>
+</nav>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+    <div class="container">
+        <h2 class="section-title section-title-center reveal" style="margin-bottom:40px;">
+            Frequently Asked <span class="highlight">Questions</span>
+        </h2>
+        <div class="faq-grid reveal">
+            <div class="faq-item active">
+                <div class="question">
+                    Who can attend NewMUN 2026?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="answer">
+                    NewMUN is open to all high school and university students in Bahrain. You don't need prior MUN experience — just enthusiasm and a desire to learn!
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="question">
+                    What is the dress code?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="answer">
+                    Western business formal (suits, blazers, formal dresses) is required for all committee sessions throughout the conference.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="question">
+                    How do I register my school?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="answer">
+                    School coordinators can register multiple delegates through our group registration form. Contact us at newmun@nisbh.com for school packages.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="question">
+                    Will food be provided?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="answer">
+                    Yes! Lunch and refreshments are included for all registered delegates on both conference days. Vegetarian and dietary options are available.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="question">
+                    What's the last date to register?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="answer">
+                    Regular registration closes on 20 September 2026. Early bird discounts are available until 31 August 2026.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="question">
+                    Will there be awards?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="answer">
+                    Yes! Awards include Best Delegate, Outstanding Delegate, Honorable Mention, and Best Position Paper for each committee.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="question">
+                    Can I participate if I've never done MUN before?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="answer">
+                    Absolutely! NewMUN is beginner-friendly. We provide training sessions and resources to help first-time delegates prepare.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== RESOURCES ===== -->
+<section id="resources">
+    <div class="container">
+        <h2 class="section-title section-title-center reveal" style="margin-bottom:16px;">
+            Delegate <span class="highlight">Resources</span>
+        </h2>
+        <p class="section-subtitle section-title-center reveal" style="margin-bottom:40px;">
+            Download background guides, rules of procedure, and more.
+        </p>
+        <div class="resources-grid tilt-wrap reveal-stagger">
+            <div class="resource-card tilt-card stagger-child">
+                <div class="icon"><i class="fas fa-file-pdf"></i></div>
+                <h3>Background Guide</h3>
+                <p>Complete guide with committee topics and research materials.</p>
+                <a href="#" class="btn-secondary" style="padding:10px 28px;font-size:0.85rem;">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+                <div class="file-size">PDF · 2.4 MB</div>
+            </div>
+            <div class="resource-card tilt-card stagger-child">
+                <div class="icon"><i class="fas fa-book"></i></div>
+                <h3>Rules of Procedure</h3>
+                <p>Official rules governing debate and resolution processes.</p>
+                <a href="#" class="btn-secondary" style="padding:10px 28px;font-size:0.85rem;">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+                <div class="file-size">PDF · 1.1 MB</div>
+            </div>
+            <div class="resource-card tilt-card stagger-child">
+                <div class="icon"><i class="fas fa-file-alt"></i></div>
+                <h3>Position Paper Template</h3>
+                <p>Template and guidelines for writing effective position papers.</p>
+                <a href="#" class="btn-secondary" style="padding:10px 28px;font-size:0.85rem;">
+                    <i class="fas fa-download"></i> Download DOCX
+                </a>
+                <div class="file-size">DOCX · 0.3 MB</div>
+            </div>
+            <div class="resource-card tilt-card stagger-child">
+                <div class="icon"><i class="fas fa-check-circle"></i></div>
+                <h3>Delegate Checklist</h3>
+                <p>Everything you need to know before arriving at the conference.</p>
+                <a href="#" class="btn-secondary" style="padding:10px 28px;font-size:0.85rem;">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+                <div class="file-size">PDF · 0.5 MB</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== VENUE & DIRECTIONS ===== -->
+<section id="venue">
+    <div class="container">
+        <div class="section-title-center reveal">
+            <span class="eyebrow"><i class="fas fa-map-marker-alt"></i> Venue</span>
+            <h2 class="section-title">Find <span class="highlight">Us</span></h2>
+            <p class="section-subtitle">NewMUN 2026 takes place at The New Indian School, Isa Town, Bahrain.</p>
+        </div>
+        <div class="venue-box reveal">
+            <div class="venue-map">
+                <!--
+                    VENUE MAP — no API key needed, this is Google's free "search embed" format.
+                    If your venue location ever changes, just edit the text after "q=" below
+                    (spaces become "+"), e.g. q=Your+New+Venue+Name+Bahrain
+                -->
+                <iframe
+                    src="https://www.google.com/maps?q=The+New+Indian+School+Isa+Town+Bahrain&output=embed"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="NewMUN 2026 venue map">
+                </iframe>
+            </div>
+            <div class="venue-details">
+                <h3><i class="fas fa-school" style="color:var(--gold);"></i> The New Indian School</h3>
+                <p>P.O. Box 33131, Isa Town, Kingdom of Bahrain</p>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=The+New+Indian+School+Isa+Town+Bahrain"
+                   target="_blank" rel="noopener" class="btn-secondary" style="margin-top:16px;">
+                    <i class="fas fa-directions"></i> Get Directions
+                </a>
+                <p style="font-size:0.85rem;color:var(--gray);margin-top:20px;">
+                    <i class="fas fa-info-circle" style="color:var(--gold);"></i>
+                    Parking is available on-site. Please arrive at least 30 minutes before your committee's first session.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" style="padding:48px 0 32px;">
+    <div class="container">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;">
+            <div>
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                    <img src="logo.png" alt="NewMUN Logo" style="width:44px;height:44px;border-radius:50%;border:2px solid var(--gold);object-fit:contain;" />
+                    <span style="font-weight:800;font-size:1.2rem;color:var(--white);font-family:var(--font-heading),serif;">
+                        NewMUN <span style="color:var(--gold);">2026</span>
+                    </span>
+                </div>
+                <p style="font-size:0.9rem;max-width:280px;">
+                    New Indian School Bahrain's premier Model UN conference.
+                    Empowering youth diplomacy since 2018.
+                </p>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Quick Links</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:8px;"><a href="index.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Home</a></li>
+                    <li style="margin-bottom:8px;"><a href="councils.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Councils</a></li>
+                    <li style="margin-bottom:8px;"><a href="oc.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">OC</a></li>
+                    <li style="margin-bottom:8px;"><a href="faq-resources.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">FAQ & Resources</a></li>
+                    <li style="margin-bottom:8px;"><a href="gallery.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Gallery</a></li>
+                    <li style="margin-bottom:8px;"><a href="sponsors.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Sponsors</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Contact</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:8px;"><a href="mailto:newmun@nisbh.com" style="font-size:0.9rem;"><i class="fas fa-envelope"></i> newmun@nisbh.com</a></li>
+                    <li style="margin-bottom:8px;"><a href="#" style="font-size:0.9rem;"><i class="fas fa-phone"></i> +973 1700 0000</a></li>
+                    <li style="margin-bottom:8px;"><a href="#" style="font-size:0.9rem;"><i class="fas fa-map-marker-alt"></i> New Indian School, Bahrain</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Follow Us</h4>
+                <div style="display:flex;gap:14px;">
+                    <a href="https://www.instagram.com/newmun.bh" target="_blank" rel="noopener" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p style="font-size:0.8rem;margin-top:16px;color:rgba(255,255,255,0.3);">
+                    #NewMUN2026
+                </p>
+            </div>
+        </div>
+        <div style="grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;margin-top:12px;text-align:center;font-size:0.85rem;">
+            &copy; 2026 NewMUN · New Indian School Bahrain. All rights reserved.
+            <span style="display:block;font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:4px;">
+                Built with <i class="fas fa-heart" style="color:var(--gold);"></i> for diplomacy
+            </span>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== THEME LAB — live customizer, try colors/gradients/glass/fonts on the real site ===== -->
+<button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+<button id="themeLabToggle" title="Theme Lab"><i class="fas fa-palette"></i></button>
+<div id="themeLabDrawer">
+    <h4>Theme Lab <button class="tl-close-btn" id="tlCloseBtn"><i class="fas fa-times"></i></button></h4>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-fill-drip"></i> Gradient Colors</div>
+        <div class="tl-row"><label>Color 1</label><input type="color" id="tlNavy" value="#0A1128" /></div>
+        <div class="tl-row"><label>Color 2</label><input type="color" id="tlNavy2" value="#150f30" /></div>
+        <div class="tl-row"><label>Color 3</label><input type="color" id="tlViolet" value="#3a1768" /></div>
+        <div class="tl-row"><label>Color 4</label><input type="color" id="tlViolet2" value="#5b2a9e" /></div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-star"></i> Accent</div>
+        <div class="tl-row"><label>Gold</label><input type="color" id="tlGold" value="#D4AF37" /></div>
+        <div class="tl-row"><label>Gold Light</label><input type="color" id="tlGoldLight" value="#f0d78c" /></div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-arrows-alt"></i> Gradient Angle</div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Angle</span><span id="tlAngleVal">125°</span></div>
+            <input type="range" id="tlAngle" min="0" max="360" value="125" />
+        </div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-blender"></i> Glass Depth</div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Blur</span><span id="tlBlurVal">20px</span></div>
+            <input type="range" id="tlBlur" min="4" max="40" value="20" />
+        </div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Opacity</span><span id="tlOpacityVal">5.5%</span></div>
+            <input type="range" id="tlOpacity" min="0" max="20" value="5.5" step="0.5" />
+        </div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-font"></i> Font Pairing</div>
+        <select id="tlFontPair">
+            <option value="playfair-inter">Playfair Display + Inter</option>
+            <option value="cormorant-manrope">Cormorant Garamond + Manrope</option>
+            <option value="fraunces-work">Fraunces + Work Sans</option>
+            <option value="marcellus-jost">Marcellus + Jost</option>
+            <option value="baskerville-source">Libre Baskerville + Source Sans Pro</option>
+            <option value="bodoni-dm">Bodoni Moda + DM Sans</option>
+        </select>
+    </div>
+
+    <button class="tl-reset-btn" id="tlReset"><i class="fas fa-undo"></i> Reset to Default</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

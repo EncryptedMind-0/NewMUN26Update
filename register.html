@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NewMUN 2026 | Register</title>
+
+    <!-- Social share preview (Open Graph + Twitter Card).
+         Replace YOUR-DOMAIN-HERE with your real domain once the site is deployed,
+         so shared links on WhatsApp/Instagram/Twitter show the logo + description correctly. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Register | NewMUN 2026" />
+    <meta property="og:description" content="Register as a Junior Delegate, Senior Delegate, or apply to Chair — NewMUN 2026, 3–4 October." />
+    <meta property="og:image" content="https://YOUR-DOMAIN-HERE.com/logo.png" />
+    <meta property="og:url" content="https://YOUR-DOMAIN-HERE.com/register.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Register | NewMUN 2026" />
+    <meta name="twitter:description" content="Register as a Junior Delegate, Senior Delegate, or apply to Chair — NewMUN 2026, 3–4 October." />
+    <meta name="twitter:image" content="https://YOUR-DOMAIN-HERE.com/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Browser tab icon (proper sizes generated from the NewMUN logo) -->
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .price-wrap {
+            max-width: 920px;
+            margin: 0 auto;
+        }
+        .price-card {
+            background: linear-gradient(155deg, var(--navy) 0%, var(--navy-2) 45%, var(--violet) 110%, var(--violet-2) 160%);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(22px) saturate(150%);
+            -webkit-backdrop-filter: blur(22px) saturate(150%);
+            border-radius: 28px;
+            padding: 56px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .price-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 85% 15%, rgba(212,175,55,0.16), transparent 55%);
+        }
+        .price-card::after {
+            content: '';
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            border: 1px dashed rgba(212,175,55,0.2);
+            top: -140px;
+            right: -100px;
+            animation: spinSlow 50s linear infinite;
+        }
+        .price-card > * { position: relative; z-index: 1; }
+
+        .price-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 32px;
+            margin-bottom: 32px;
+        }
+        .price-tag {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .price-tag .amount {
+            font-family: var(--font-heading), serif;
+            font-size: 4.2rem;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .price-tag .currency {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold-light);
+        }
+        .price-tag .per {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.95rem;
+            align-self: center;
+            margin-left: 4px;
+        }
+        .price-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        /* ===== THREE REGISTRATION OPTIONS ===== */
+        .register-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .register-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(22px) saturate(150%);
+            -webkit-backdrop-filter: blur(22px) saturate(150%);
+            border-radius: 24px;
+            padding: 36px 28px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow);
+        }
+        .register-card:hover {
+            border-color: rgba(212,175,55,0.4);
+            box-shadow: var(--shadow-lg), 0 0 30px rgba(212,175,55,0.14) !important;
+        }
+        .register-card .reg-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(150deg, var(--navy), var(--violet));
+            border: 1px solid rgba(212,175,55,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 18px;
+        }
+        .register-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+        .register-card .reg-grade {
+            color: var(--gray);
+            font-size: 0.82rem;
+            margin-bottom: 18px;
+        }
+        .register-card .reg-price {
+            font-family: var(--font-heading), serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+        .register-card .reg-price small {
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: 400;
+            font-family: var(--font-body), sans-serif;
+        }
+        .register-card ul {
+            list-style: none;
+            margin: 18px 0 26px;
+            flex: 1;
+        }
+        .register-card ul li {
+            display: flex;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.78);
+            margin-bottom: 10px;
+        }
+        .register-card ul li i {
+            color: var(--gold);
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        .register-card.chair-card {
+            border-color: rgba(79,141,253,0.3);
+        }
+        .register-card.chair-card .reg-icon {
+            border-color: rgba(79,141,253,0.4);
+            color: var(--blue-glow);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 36px;
+        }
+        .feature-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), background 0.35s var(--ease);
+        }
+        .feature-item:hover {
+            transform: translateY(-6px);
+            border-color: rgba(212,175,55,0.4);
+            background: rgba(255,255,255,0.08);
+        }
+        .feature-item .ficon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(212,175,55,0.14);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin: 0 auto 14px;
+        }
+        .feature-item h4 {
+            font-family: var(--font-body), sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--white);
+        }
+        .feature-item p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.55);
+        }
+
+        .price-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .price-note {
+            color: rgba(255,255,255,0.45);
+            font-size: 0.85rem;
+            margin-top: 20px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+        .step-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border-radius: 18px;
+            padding: 28px 24px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+        }
+        .step-card:hover {
+            border-color: rgba(212,175,55,0.4);
+            box-shadow: var(--shadow-lg), 0 0 28px rgba(212,175,55,0.14) !important;
+        }
+        .step-card .step-num {
+            font-family: var(--font-heading), serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .step-card h4 { font-size: 1.05rem; margin-bottom: 6px; }
+        .step-card p { color: var(--gray); font-size: 0.9rem; }
+
+        @media (max-width: 900px) {
+            .feature-grid { grid-template-columns: 1fr 1fr; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .register-options { grid-template-columns: 1fr; max-width: 480px; }
+        }
+        @media (max-width: 640px) {
+            .price-card { padding: 34px 22px; }
+            .price-tag .amount { font-size: 3rem; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .price-top { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<!-- Decorative wavy background lines — built dynamically in script.js so they tile seamlessly -->
+<div class="wave-bg" id="waveBg" aria-hidden="true"></div>
+
+<!-- Loading screen: book-reveal transition, removes itself once the page has loaded -->
+<noscript><style>#loader{display:none !important;}</style></noscript>
+<div id="loader">
+    <div class="loader-half left"></div>
+    <div class="loader-half right"></div>
+    <div class="loader-center">
+        <div class="loader-logo-ring">
+            <img src="logo.png" alt="NewMUN" />
+        </div>
+        <div class="loader-text">NewMUN 2026</div>
+        <div class="loader-tagline" id="loaderTagline">Assembling delegates</div>
+        <div class="loader-progress"><div class="loader-progress-fill" id="loaderProgressFill"></div></div>
+    </div>
+</div>
+
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="NewMUN Logo" />
+            <span>
+                NewMUN
+                <small>2026 · Bahrain</small>
+            </span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="councils.html">Councils</a></li>
+            <li><a href="oc.html">OC</a></li>
+            <li><a href="faq-resources.html">FAQ & Resources</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+            <li><a href="register.html" class="btn-outline active">Register</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<header class="page-header">
+    <div class="container">
+        <h1>Register for <span class="highlight">NewMUN 2026</span></h1>
+        <p>One conference fee. Everything a delegate needs to step onto the floor.</p>
+    </div>
+    <svg class="page-header-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,26 C240,60 480,0 720,24 C960,48 1200,6 1440,30 L1440,60 L0,60 Z" fill="var(--navy)"></path>
+    </svg>
+</header>
+
+<!-- ===== PRICING ===== -->
+<section id="register">
+    <div class="container">
+        <div class="section-title-center reveal" style="margin-bottom:48px;">
+            <span class="eyebrow"><i class="fas fa-ticket-alt"></i> Choose Your Path</span>
+            <h2 class="section-title">Registration <span class="highlight">Options</span></h2>
+            <p class="section-subtitle" style="margin:0 auto;">Conference dates: 3–4 October 2026</p>
+        </div>
+
+        <div class="register-options tilt-wrap reveal-stagger">
+            <!-- JUNIOR DELEGATE -->
+            <div class="register-card tilt-card stagger-child">
+                <div class="reg-icon"><i class="fas fa-child"></i></div>
+                <h3>Junior Delegate</h3>
+                <div class="reg-grade">Grades 5 – 7</div>
+                <div class="reg-price"><span class="count-num" data-target="16">0</span> <small>BHD</small></div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Access to all Junior Councils</li>
+                    <li><i class="fas fa-check"></i> Custom delegate ID</li>
+                    <li><i class="fas fa-check"></i> Certificate of participation</li>
+                    <li><i class="fas fa-check"></i> Lunch included, both days</li>
+                </ul>
+                <!-- Same placeholder Google Form as other options — replace with a Junior-specific form if you'd rather track them separately -->
+                <a href="https://forms.gle/PASTE_YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" rel="noopener" class="btn-secondary" style="text-align:center;">
+                    Register as Junior <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- SENIOR DELEGATE -->
+            <div class="register-card tilt-card stagger-child">
+                <div class="reg-icon"><i class="fas fa-user-graduate"></i></div>
+                <h3>Senior Delegate</h3>
+                <div class="reg-grade">Grades 8 – 12</div>
+                <div class="reg-price"><span class="count-num" data-target="16">0</span> <small>BHD</small></div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Access to all Senior Councils</li>
+                    <li><i class="fas fa-check"></i> Custom delegate ID</li>
+                    <li><i class="fas fa-check"></i> Certificate of participation</li>
+                    <li><i class="fas fa-check"></i> Lunch included, both days</li>
+                </ul>
+                <a href="https://forms.gle/PASTE_YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" rel="noopener" class="btn-primary btn-glow" style="text-align:center; justify-content:center;">
+                    Register as Senior <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- CHAIR (leadership/application track, not a paid delegate seat) -->
+            <div class="register-card chair-card tilt-card stagger-child">
+                <div class="reg-icon"><i class="fas fa-gavel"></i></div>
+                <h3>Chair</h3>
+                <div class="reg-grade">By application &middot; open to past delegates</div>
+                <div class="reg-price" style="font-size:1.3rem;">Apply <small>— no fee</small></div>
+                <ul>
+                    <li><i class="fas fa-check"></i> Lead a committee's debate &amp; procedure</li>
+                    <li><i class="fas fa-check"></i> Leadership certificate &amp; reference letter</li>
+                    <li><i class="fas fa-check"></i> Executive Board listing on the Councils page</li>
+                    <li><i class="fas fa-check"></i> Lunch included, both days</li>
+                </ul>
+                <!-- Chairs are typically selected, not self-registered — routes to an email application instead of the delegate form -->
+                <a href="mailto:newmun@nisbh.com?subject=NewMUN%202026%20Chair%20Application" class="btn-outline" style="text-align:center;">
+                    Apply to Chair <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <p class="reveal" style="text-align:center;color:var(--gray);font-size:0.85rem;margin-top:28px;">
+            Registration closes 20 September 2026 · Early-bird pricing available until 31 August 2026 ·
+            School coordinators can request group registration at <a href="mailto:newmun@nisbh.com" style="color:var(--gold-light);">newmun@nisbh.com</a>
+        </p>
+
+        <div class="steps-grid tilt-wrap reveal-stagger">
+            <div class="step-card tilt-card stagger-child">
+                <div class="step-num">01</div>
+                <h4>Choose Your Council</h4>
+                <p>Browse our Senior and Junior Councils and pick the committee that fits your interests.</p>
+            </div>
+            <div class="step-card tilt-card stagger-child">
+                <div class="step-num">02</div>
+                <h4>Submit Registration</h4>
+                <p>Fill out the form above, or have your school coordinator submit a group registration.</p>
+            </div>
+            <div class="step-card tilt-card stagger-child">
+                <div class="step-num">03</div>
+                <h4>Prepare &amp; Arrive</h4>
+                <p>Download your background guide from Resources and arrive ready to debate.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" style="padding:48px 0 32px;">
+    <div class="container">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;">
+            <div>
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                    <img src="logo.png" alt="NewMUN Logo" style="width:44px;height:44px;border-radius:50%;border:2px solid var(--gold);object-fit:contain;" />
+                    <span style="font-weight:800;font-size:1.2rem;color:var(--white);font-family:var(--font-heading),serif;">
+                        NewMUN <span style="color:var(--gold);">2026</span>
+                    </span>
+                </div>
+                <p style="font-size:0.9rem;max-width:280px;">
+                    New Indian School Bahrain's premier Model UN conference.
+                    Empowering youth diplomacy since 2018.
+                </p>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Quick Links</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:8px;"><a href="index.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Home</a></li>
+                    <li style="margin-bottom:8px;"><a href="councils.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Councils</a></li>
+                    <li style="margin-bottom:8px;"><a href="oc.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">OC</a></li>
+                    <li style="margin-bottom:8px;"><a href="faq-resources.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">FAQ & Resources</a></li>
+                    <li style="margin-bottom:8px;"><a href="gallery.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Gallery</a></li>
+                    <li style="margin-bottom:8px;"><a href="sponsors.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Sponsors</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Contact</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:8px;"><a href="mailto:newmun@nisbh.com" style="font-size:0.9rem;"><i class="fas fa-envelope"></i> newmun@nisbh.com</a></li>
+                    <li style="margin-bottom:8px;"><a href="#" style="font-size:0.9rem;"><i class="fas fa-phone"></i> +973 1700 0000</a></li>
+                    <li style="margin-bottom:8px;"><a href="#" style="font-size:0.9rem;"><i class="fas fa-map-marker-alt"></i> New Indian School, Bahrain</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Follow Us</h4>
+                <div style="display:flex;gap:14px;">
+                    <a href="https://www.instagram.com/newmun.bh" target="_blank" rel="noopener" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p style="font-size:0.8rem;margin-top:16px;color:rgba(255,255,255,0.3);">
+                    #NewMUN2026
+                </p>
+            </div>
+        </div>
+        <div style="grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;margin-top:12px;text-align:center;font-size:0.85rem;">
+            &copy; 2026 NewMUN · New Indian School Bahrain. All rights reserved.
+            <span style="display:block;font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:4px;">
+                Built with <i class="fas fa-heart" style="color:var(--gold);"></i> for diplomacy
+            </span>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== THEME LAB — live customizer, try colors/gradients/glass/fonts on the real site ===== -->
+<button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+<button id="themeLabToggle" title="Theme Lab"><i class="fas fa-palette"></i></button>
+<div id="themeLabDrawer">
+    <h4>Theme Lab <button class="tl-close-btn" id="tlCloseBtn"><i class="fas fa-times"></i></button></h4>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-fill-drip"></i> Gradient Colors</div>
+        <div class="tl-row"><label>Color 1</label><input type="color" id="tlNavy" value="#0A1128" /></div>
+        <div class="tl-row"><label>Color 2</label><input type="color" id="tlNavy2" value="#150f30" /></div>
+        <div class="tl-row"><label>Color 3</label><input type="color" id="tlViolet" value="#3a1768" /></div>
+        <div class="tl-row"><label>Color 4</label><input type="color" id="tlViolet2" value="#5b2a9e" /></div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-star"></i> Accent</div>
+        <div class="tl-row"><label>Gold</label><input type="color" id="tlGold" value="#D4AF37" /></div>
+        <div class="tl-row"><label>Gold Light</label><input type="color" id="tlGoldLight" value="#f0d78c" /></div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-arrows-alt"></i> Gradient Angle</div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Angle</span><span id="tlAngleVal">125°</span></div>
+            <input type="range" id="tlAngle" min="0" max="360" value="125" />
+        </div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-blender"></i> Glass Depth</div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Blur</span><span id="tlBlurVal">20px</span></div>
+            <input type="range" id="tlBlur" min="4" max="40" value="20" />
+        </div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Opacity</span><span id="tlOpacityVal">5.5%</span></div>
+            <input type="range" id="tlOpacity" min="0" max="20" value="5.5" step="0.5" />
+        </div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-font"></i> Font Pairing</div>
+        <select id="tlFontPair">
+            <option value="playfair-inter">Playfair Display + Inter</option>
+            <option value="cormorant-manrope">Cormorant Garamond + Manrope</option>
+            <option value="fraunces-work">Fraunces + Work Sans</option>
+            <option value="marcellus-jost">Marcellus + Jost</option>
+            <option value="baskerville-source">Libre Baskerville + Source Sans Pro</option>
+            <option value="bodoni-dm">Bodoni Moda + DM Sans</option>
+        </select>
+    </div>
+
+    <button class="tl-reset-btn" id="tlReset"><i class="fas fa-undo"></i> Reset to Default</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NewMUN 2026 | Councils</title>
+
+    <!-- Social share preview (Open Graph + Twitter Card).
+         Replace YOUR-DOMAIN-HERE with your real domain once the site is deployed,
+         so shared links on WhatsApp/Instagram/Twitter show the logo + description correctly. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Councils | NewMUN 2026" />
+    <meta property="og:description" content="Explore our Senior and Junior Councils — from UNSC to a Fictional Crisis Committee — and this year's agendas." />
+    <meta property="og:image" content="https://YOUR-DOMAIN-HERE.com/logo.png" />
+    <meta property="og:url" content="https://YOUR-DOMAIN-HERE.com/councils.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Councils | NewMUN 2026" />
+    <meta name="twitter:description" content="Explore our Senior and Junior Councils — from UNSC to a Fictional Crisis Committee — and this year's agendas." />
+    <meta name="twitter:image" content="https://YOUR-DOMAIN-HERE.com/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Browser tab icon (proper sizes generated from the NewMUN logo) -->
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .councils-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .council-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border-radius: 20px;
+            padding: 20px 24px 26px;
+            box-shadow: var(--shadow);
+            border-bottom: 4px solid var(--gold);
+        }
+        .council-card:hover {
+            border-color: rgba(212,175,55,0.4);
+            box-shadow: var(--shadow-lg), 0 0 30px rgba(212,175,55,0.14) !important;
+        }
+
+        /* --- Themed rectangular media placeholder (replaces circular icon) ---
+           Each council gets its own gradient + subtle pattern relevant to its topic.
+           Swap the <i> icon inside .council-media for a real logo <img> when you have one:
+           <img src="images/councils/unsc.jpg" style="width:100%;height:100%;object-fit:cover;" />
+        */
+        .council-media {
+            width: 100%;
+            height: 130px;
+            border-radius: 14px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            color: rgba(255,255,255,0.9);
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.3);
+        }
+        .council-media i {
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+        }
+        .council-media::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        .theme-unsc .council-media { background: linear-gradient(135deg, #3a0d12, #1a1f3d); }
+        .theme-unsc .council-media::before { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 10px, transparent 10px 20px); }
+
+        .theme-fifa .council-media { background: linear-gradient(135deg, #0d3a1f, #08251d); }
+        .theme-fifa .council-media::before { background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.07) 0 2px, transparent 2px 22px); }
+
+        .theme-unesco .council-media { background: linear-gradient(135deg, #4a3410, #2b1f0a); }
+        .theme-unesco .council-media::before { background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 16px 16px; }
+
+        .theme-fcc-aot .council-media { background: linear-gradient(135deg, #3d0f0f, #1a0808); }
+        .theme-fcc-aot .council-media::before { background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%); }
+
+        .theme-loksabha .council-media { background: linear-gradient(180deg, rgba(255,153,51,0.45) 0%, rgba(255,255,255,0.18) 45%, rgba(19,136,8,0.45) 100%), var(--navy); }
+
+        .theme-csw .council-media { background: linear-gradient(135deg, #4a1030, #2b0a1f); }
+        .theme-csw .council-media::before { background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 18px 18px; }
+
+        .theme-unep .council-media { background: linear-gradient(135deg, #0d3a1f, #06200f); }
+        .theme-unep .council-media::before { background-image: radial-gradient(rgba(150,255,180,0.1) 2px, transparent 2px); background-size: 20px 20px; }
+
+        .theme-unoosa .council-media { background: linear-gradient(135deg, #0a0a2e, #1a0a3d); }
+        .theme-unoosa .council-media::before {
+            background-image: radial-gradient(white 1px, transparent 1px), radial-gradient(white 1px, transparent 1px);
+            background-size: 50px 50px, 80px 80px;
+            background-position: 0 0, 25px 35px;
+            opacity: 0.5;
+        }
+
+        .theme-fcc-avatar .council-media { background: linear-gradient(135deg, #0a2f4a, #062038); }
+        .theme-fcc-avatar .council-media::before { background-image: repeating-radial-gradient(circle at 50% 130%, transparent 0 18px, rgba(255,255,255,0.05) 18px 20px); }
+
+        .council-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+        }
+        .council-card .subtitle {
+            display: block;
+            color: var(--gray);
+            font-size: 0.8rem;
+            font-style: italic;
+            margin-bottom: 14px;
+        }
+        .agenda-list {
+            list-style: none;
+            text-align: left;
+            margin-top: 6px;
+        }
+        .agenda-list li {
+            display: flex;
+            gap: 10px;
+            font-size: 0.86rem;
+            color: rgba(255,255,255,0.78);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        .agenda-list li:last-child { margin-bottom: 0; }
+        .agenda-list li i {
+            color: var(--gold);
+            font-size: 0.7rem;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+        .council-group-header {
+            margin-bottom: 36px;
+        }
+        .council-group-header h2 {
+            font-size: 2.1rem;
+        }
+    </style>
+</head>
+<body>
+<!-- Decorative wavy background lines — built dynamically in script.js so they tile seamlessly -->
+<div class="wave-bg" id="waveBg" aria-hidden="true"></div>
+
+<!-- Loading screen: book-reveal transition, removes itself once the page has loaded -->
+<noscript><style>#loader{display:none !important;}</style></noscript>
+<div id="loader">
+    <div class="loader-half left"></div>
+    <div class="loader-half right"></div>
+    <div class="loader-center">
+        <div class="loader-logo-ring">
+            <img src="logo.png" alt="NewMUN" />
+        </div>
+        <div class="loader-text">NewMUN 2026</div>
+        <div class="loader-tagline" id="loaderTagline">Assembling delegates</div>
+        <div class="loader-progress"><div class="loader-progress-fill" id="loaderProgressFill"></div></div>
+    </div>
+</div>
+
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="NewMUN Logo" />
+            <span>
+                NewMUN
+                <small>2026 · Bahrain</small>
+            </span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="councils.html" class="active">Councils</a></li>
+            <li><a href="oc.html">OC</a></li>
+            <li><a href="faq-resources.html">FAQ & Resources</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+            <li><a href="register.html" class="btn-outline">Register</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<header class="page-header">
+    <div class="container">
+        <h1>Our <span class="highlight">Councils</span></h1>
+        <p>Nine committees tackling this year's most pressing agendas. Toggle below to explore Senior or Junior councils.</p>
+    </div>
+    <svg class="page-header-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,26 C240,60 480,0 720,24 C960,48 1200,6 1440,30 L1440,60 L0,60 Z" fill="var(--navy)"></path>
+    </svg>
+</header>
+
+<!-- ===== COUNCILS TOGGLE ===== -->
+<section>
+    <div class="container">
+        <div class="council-toggle reveal">
+            <div class="toggle-track" id="councilToggle" data-active="senior">
+                <div class="toggle-glider"></div>
+                <button class="toggle-option active" id="toggleSenior" type="button">
+                    <i class="fas fa-user-graduate"></i> <span>Senior Councils</span>
+                </button>
+                <button class="toggle-option" id="toggleJunior" type="button">
+                    <i class="fas fa-child"></i> <span>Junior Councils</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ===== SENIOR PANEL ===== -->
+        <div class="council-group council-panel active" id="seniorPanel">
+            <div class="council-group-header section-title-center reveal">
+                <span class="eyebrow"><i class="fas fa-user-graduate"></i> Grades 8 – 12</span>
+                <h2 class="section-title">Senior <span class="highlight">Councils</span></h2>
+                <p class="section-subtitle">Six committees for experienced delegates ready to take on complex, high-stakes negotiation.</p>
+            </div>
+            <div class="councils-grid tilt-wrap reveal-stagger">
+                <div class="council-card tilt-card stagger-child theme-unsc">
+                    <div class="council-media"><i class="fas fa-shield-alt"></i></div>
+                    <h3>United Nations Security Council</h3>
+                    <span class="subtitle">UNSC</span>
+                    <ul class="agenda-list">
+                        <li><i class="fas fa-circle"></i> The re-evaluation of the UN Security Council: reforms in veto powers</li>
+                        <li><i class="fas fa-circle"></i> Environmental resource security and defence of nations</li>
+                    </ul>
+                    <button class="know-more-btn" onclick="openModal('modal-unsc')">Know More <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <div class="council-card tilt-card stagger-child theme-fifa">
+                    <div class="council-media"><i class="fas fa-futbol"></i></div>
+                    <h3>Fédération Internationale de Football Association</h3>
+                    <span class="subtitle">FIFA</span>
+                    <ul class="agenda-list">
+                        <li><i class="fas fa-circle"></i> Safeguarding the rights and welfare of young athletes in international sports</li>
+                        <li><i class="fas fa-circle"></i> Promoting financial sustainability and competitive balance in professional football</li>
+                    </ul>
+                    <button class="know-more-btn" onclick="openModal('modal-fifa')">Know More <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <div class="council-card tilt-card stagger-child theme-unesco">
+                    <div class="council-media"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>UNESCO</h3>
+                    <span class="subtitle">United Nations Educational, Scientific and Cultural Organization</span>
+                    <ul class="agenda-list">
+                        <li><i class="fas fa-circle"></i> Standardizing under-16 social media prohibition vs. safeguarding youth digital rights</li>
+                        <li><i class="fas fa-circle"></i> The ethics of genetic engineering and bio-data privacy</li>
+                    </ul>
+                    <button class="know-more-btn" onclick="openModal('modal-unesco')">Know More <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <div class="council-card tilt-card stagger-child theme-fcc-aot">
+                    <div class="council-media"><i class="fas fa-fire"></i></div>
+                    <h3>Fictional Crisis Committee</h3>
+                    <span class="subtitle">Attack on Titan — Shingeki no Kyojin</span>
+                    <ul class="agenda-list">
+                        <li><i class="fas fa-circle"></i> Establishing international standards for the ethical regulation of advanced biological research</li>
+                        <li><i class="fas fa-circle"></i> Standardizing civil law enforcement equipment and operational protocols in urban environments</li>
+                    </ul>
+                    <button class="know-more-btn" onclick="openModal('modal-fcc-aot')">Know More <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <div class="council-card tilt-card stagger-child theme-loksabha">
+                    <div class="council-media"><i class="fas fa-landmark"></i></div>
+                    <h3>Lok Sabha</h3>
+                    <span class="subtitle">Indian Parliament</span>
+                    <ul class="agenda-list">
+                        <li><i class="fas fa-circle"></i> Advancing the Women's Reservation Bill</li>
+                        <li><i class="fas fa-circle"></i> Viksit Bharat Shiksha Adhishthan Bill (Developed India Education Establishment Bill), 2025</li>
+                    </ul>
+                    <button class="know-more-btn" onclick="openModal('modal-loksabha')">Know More <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <div class="council-card tilt-card stagger-child theme-csw">
+                    <div class="council-media"><i class="fas fa-venus"></i></div>
+                    <h3>Commission on the Status of Women</h3>
+                    <span class="subtitle">CSW</span>
+                    <ul class="agenda-list">
+                        <li><i class="fas fa-circle"></i> Global standards and maternal care</li>
+                        <li><i class="fas fa-circle"></i> Advancing women's representation in political and economic leadership</li>
+                    </ul>
+                    <button class="know-more-btn" onclick="openModal('modal-csw')">Know More <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== JUNIOR PANEL ===== -->
+        <div class="council-group council-panel" id="juniorPanel">
+            <div class="council-group-header section-title-center reveal">
+                <span class="eyebrow"><i class="fas fa-child"></i> Grades 5 – 7</span>
+                <h2 class="section-title">Junior <span class="highlight">Councils</span></h2>
+                <p class="section-subtitle">A beginner-friendly introduction to diplomacy, designed for our youngest delegates.</p>
+            </div>
+            <div class="councils-grid tilt-wrap reveal-stagger">
+                <div class="council-card tilt-card stagger-child theme-unep">
+                    <div class="council-media"><i class="fas fa-leaf"></i></div>
+                    <h3>UNEP</h3>
+                    <span class="subtitle">United Nations Environment Programme</span>
+                    <ul class="agenda-list">
+                        <li><i class="fas fa-circle"></i> Ethics of green mining for EV batteries</li>
+                        <li><i class="fas fa-circle"></i> Geoengineering &amp; weather modification</li>
+                    </ul>
+                    <button class="know-more-btn" onclick="openModal('modal-unep')">Know More <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <div class="council-card tilt-card stagger-child theme-unoosa">
+                    <div class="council-media"><i class="fas fa-rocket"></i></div>
+                    <h3>UNOOSA</h3>
+                    <span class="subtitle">United Nations Office for Outer Space Affairs</span>
+                    <ul class="agenda-list">
+                        <li><i class="fas fa-circle"></i> Management of extra-terrestrial resources and planetary protection</li>
+                        <li><i class="fas fa-circle"></i> Commercial space tourism and safety</li>
+                    </ul>
+                    <button class="know-more-btn" onclick="openModal('modal-unoosa')">Know More <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <div class="council-card tilt-card stagger-child theme-fcc-avatar">
+                    <div class="council-media"><i class="fas fa-wind"></i></div>
+                    <h3>Fictional Crisis Committee</h3>
+                    <span class="subtitle">Avatar: The Last Airbender</span>
+                    <ul class="agenda-list">
+                        <li><i class="fas fa-circle"></i> International control over emerging extractive industries</li>
+                        <li><i class="fas fa-circle"></i> Promoting universal standards for clean water access and sanitation infrastructure in rural settlements</li>
+                    </ul>
+                    <button class="know-more-btn" onclick="openModal('modal-fcc-avatar')">Know More <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" style="padding:48px 0 32px;">
+    <div class="container">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;">
+            <div>
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                    <img src="logo.png" alt="NewMUN Logo" style="width:44px;height:44px;border-radius:50%;border:2px solid var(--gold);object-fit:contain;" />
+                    <span style="font-weight:800;font-size:1.2rem;color:var(--white);font-family:var(--font-heading),serif;">
+                        NewMUN <span style="color:var(--gold);">2026</span>
+                    </span>
+                </div>
+                <p style="font-size:0.9rem;max-width:280px;">
+                    New Indian School Bahrain's premier Model UN conference.
+                    Empowering youth diplomacy since 2018.
+                </p>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Quick Links</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:8px;"><a href="index.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Home</a></li>
+                    <li style="margin-bottom:8px;"><a href="councils.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Councils</a></li>
+                    <li style="margin-bottom:8px;"><a href="oc.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">OC</a></li>
+                    <li style="margin-bottom:8px;"><a href="faq-resources.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">FAQ & Resources</a></li>
+                    <li style="margin-bottom:8px;"><a href="gallery.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Gallery</a></li>
+                    <li style="margin-bottom:8px;"><a href="sponsors.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Sponsors</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Contact</h4>
+                <ul style="list-style:none;">
+                    <li style="margin-bottom:8px;"><a href="mailto:newmun@nisbh.com" style="font-size:0.9rem;"><i class="fas fa-envelope"></i> newmun@nisbh.com</a></li>
+                    <li style="margin-bottom:8px;"><a href="#" style="font-size:0.9rem;"><i class="fas fa-phone"></i> +973 1700 0000</a></li>
+                    <li style="margin-bottom:8px;"><a href="#" style="font-size:0.9rem;"><i class="fas fa-map-marker-alt"></i> New Indian School, Bahrain</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color:var(--white);font-size:1rem;margin-bottom:16px;">Follow Us</h4>
+                <div style="display:flex;gap:14px;">
+                    <a href="https://www.instagram.com/newmun.bh" target="_blank" rel="noopener" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;transition:0.2s;color:var(--white);" onmouseover="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseout="this.style.background='';this.style.color=''"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p style="font-size:0.8rem;margin-top:16px;color:rgba(255,255,255,0.3);">
+                    #NewMUN2026
+                </p>
+            </div>
+        </div>
+        <div style="grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;margin-top:12px;text-align:center;font-size:0.85rem;">
+            &copy; 2026 NewMUN · New Indian School Bahrain. All rights reserved.
+            <span style="display:block;font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:4px;">
+                Built with <i class="fas fa-heart" style="color:var(--gold);"></i> for diplomacy
+            </span>
+        </div>
+    </div>
+</footer>
+
+<!--
+    KNOW MORE MODALS — one per council.
+    Executive Board names are PLACEHOLDERS (search "eb-name") — replace with your real chairs.
+-->
+<div class="modal-overlay" id="modal-unsc">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-unsc')"><i class="fas fa-times"></i></button>
+        <h3>United Nations Security Council</h3>
+        <div class="modal-subtitle">UNSC · Senior Council</div>
+        <div class="modal-section-label">Overview</div>
+        <p>The UN Security Council is the UN's most powerful organ, holding primary responsibility for maintaining international peace and security. Delegates negotiate binding resolutions on today's most pressing security crises.</p>
+        <div class="modal-section-label">Agenda</div>
+        <ul>
+            <li><i class="fas fa-circle"></i> The re-evaluation of the UN Security Council: reforms in veto powers</li>
+            <li><i class="fas fa-circle"></i> Environmental resource security and defence of nations</li>
+        </ul>
+        <div class="modal-section-label">Executive Board</div>
+        <div class="modal-eb-row">
+            <div class="modal-eb-chip"><div class="eb-avatar">RH</div><div><div class="eb-name">Rayyan Haque</div><div class="eb-role">Chair</div></div></div>
+            <div class="modal-eb-chip"><div class="eb-avatar">MI</div><div><div class="eb-name">Meera Iyer</div><div class="eb-role">Vice Chair</div></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-fifa">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-fifa')"><i class="fas fa-times"></i></button>
+        <h3>Fédération Internationale de Football Association</h3>
+        <div class="modal-subtitle">FIFA · Senior Council</div>
+        <div class="modal-section-label">Overview</div>
+        <p>FIFA governs world football, setting policy on player welfare, competition structure, and the sport's financial future. Delegates represent member federations shaping the game's next era.</p>
+        <div class="modal-section-label">Agenda</div>
+        <ul>
+            <li><i class="fas fa-circle"></i> Safeguarding the rights and welfare of young athletes in international sports</li>
+            <li><i class="fas fa-circle"></i> Promoting financial sustainability and competitive balance in professional football</li>
+        </ul>
+        <div class="modal-section-label">Executive Board</div>
+        <div class="modal-eb-row">
+            <div class="modal-eb-chip"><div class="eb-avatar">NA</div><div><div class="eb-name">Noor Al-Sayed</div><div class="eb-role">Chair</div></div></div>
+            <div class="modal-eb-chip"><div class="eb-avatar">YK</div><div><div class="eb-name">Yusuf Khan</div><div class="eb-role">Vice Chair</div></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-unesco">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-unesco')"><i class="fas fa-times"></i></button>
+        <h3>UNESCO</h3>
+        <div class="modal-subtitle">United Nations Educational, Scientific and Cultural Organization · Senior Council</div>
+        <div class="modal-section-label">Overview</div>
+        <p>UNESCO promotes international cooperation in education, science, and culture. This committee tackles the ethical frontiers of emerging technology and children's digital rights.</p>
+        <div class="modal-section-label">Agenda</div>
+        <ul>
+            <li><i class="fas fa-circle"></i> Standardizing under-16 social media prohibition vs. safeguarding youth digital rights</li>
+            <li><i class="fas fa-circle"></i> The ethics of genetic engineering and bio-data privacy</li>
+        </ul>
+        <div class="modal-section-label">Executive Board</div>
+        <div class="modal-eb-row">
+            <div class="modal-eb-chip"><div class="eb-avatar">ZA</div><div><div class="eb-name">Zainab Al-Ansari</div><div class="eb-role">Chair</div></div></div>
+            <div class="modal-eb-chip"><div class="eb-avatar">DP</div><div><div class="eb-name">Devan Pillai</div><div class="eb-role">Vice Chair</div></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-fcc-aot">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-fcc-aot')"><i class="fas fa-times"></i></button>
+        <h3>Fictional Crisis Committee</h3>
+        <div class="modal-subtitle">Attack on Titan — Shingeki no Kyojin · Senior Council</div>
+        <div class="modal-section-label">Overview</div>
+        <p>A fictional crisis committee set within the world of Attack on Titan, where delegates respond to fast-moving, in-universe emergencies that test improvisation as much as diplomacy.</p>
+        <div class="modal-section-label">Agenda</div>
+        <ul>
+            <li><i class="fas fa-circle"></i> Establishing international standards for the ethical regulation of advanced biological research</li>
+            <li><i class="fas fa-circle"></i> Standardizing civil law enforcement equipment and operational protocols in urban environments</li>
+        </ul>
+        <div class="modal-section-label">Executive Board</div>
+        <div class="modal-eb-row">
+            <div class="modal-eb-chip"><div class="eb-avatar">AN</div><div><div class="eb-name">Arjun Nair</div><div class="eb-role">Chair</div></div></div>
+            <div class="modal-eb-chip"><div class="eb-avatar">HA</div><div><div class="eb-name">Hessa Al-Marzooqi</div><div class="eb-role">Vice Chair</div></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-loksabha">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-loksabha')"><i class="fas fa-times"></i></button>
+        <h3>Lok Sabha</h3>
+        <div class="modal-subtitle">Indian Parliament · Senior Council</div>
+        <div class="modal-section-label">Overview</div>
+        <p>A simulation of India's lower house of Parliament, where delegates take on the roles of sitting MPs and ministers, debating live domestic legislation across party lines.</p>
+        <div class="modal-section-label">Agenda</div>
+        <ul>
+            <li><i class="fas fa-circle"></i> Advancing the Women's Reservation Bill</li>
+            <li><i class="fas fa-circle"></i> Viksit Bharat Shiksha Adhishthan Bill (Developed India Education Establishment Bill), 2025</li>
+        </ul>
+        <div class="modal-section-label">Executive Board</div>
+        <div class="modal-eb-row">
+            <div class="modal-eb-chip"><div class="eb-avatar">PM</div><div><div class="eb-name">Priya Menon</div><div class="eb-role">Chair</div></div></div>
+            <div class="modal-eb-chip"><div class="eb-avatar">OF</div><div><div class="eb-name">Omar Farouk</div><div class="eb-role">Vice Chair</div></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-csw">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-csw')"><i class="fas fa-times"></i></button>
+        <h3>Commission on the Status of Women</h3>
+        <div class="modal-subtitle">CSW · Senior Council</div>
+        <div class="modal-section-label">Overview</div>
+        <p>The UN Commission on the Status of Women is the principal global body dedicated to gender equality and the advancement of women, addressing policy on health, leadership, and representation.</p>
+        <div class="modal-section-label">Agenda</div>
+        <ul>
+            <li><i class="fas fa-circle"></i> Global standards and maternal care</li>
+            <li><i class="fas fa-circle"></i> Advancing women's representation in political and economic leadership</li>
+        </ul>
+        <div class="modal-section-label">Executive Board</div>
+        <div class="modal-eb-row">
+            <div class="modal-eb-chip"><div class="eb-avatar">SA</div><div><div class="eb-name">Sara Al-Khalifa</div><div class="eb-role">Chair</div></div></div>
+            <div class="modal-eb-chip"><div class="eb-avatar">KA</div><div><div class="eb-name">Kabir Anand</div><div class="eb-role">Vice Chair</div></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-unep">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-unep')"><i class="fas fa-times"></i></button>
+        <h3>UNEP</h3>
+        <div class="modal-subtitle">United Nations Environment Programme · Junior Council</div>
+        <div class="modal-section-label">Overview</div>
+        <p>The United Nations Environment Programme coordinates the UN's environmental activities, guiding delegates through emerging ecological and climate policy challenges.</p>
+        <div class="modal-section-label">Agenda</div>
+        <ul>
+            <li><i class="fas fa-circle"></i> Ethics of green mining for EV batteries</li>
+            <li><i class="fas fa-circle"></i> Geoengineering &amp; weather modification</li>
+        </ul>
+        <div class="modal-section-label">Executive Board</div>
+        <div class="modal-eb-row">
+            <div class="modal-eb-chip"><div class="eb-avatar">LH</div><div><div class="eb-name">Layla Hassan</div><div class="eb-role">Chair</div></div></div>
+            <div class="modal-eb-chip"><div class="eb-avatar">VJ</div><div><div class="eb-name">Vihaan Joseph</div><div class="eb-role">Vice Chair</div></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-unoosa">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-unoosa')"><i class="fas fa-times"></i></button>
+        <h3>UNOOSA</h3>
+        <div class="modal-subtitle">United Nations Office for Outer Space Affairs · Junior Council</div>
+        <div class="modal-section-label">Overview</div>
+        <p>The UN Office for Outer Space Affairs oversees international cooperation in the peaceful use of outer space, from resource governance to the growing commercial space industry.</p>
+        <div class="modal-section-label">Agenda</div>
+        <ul>
+            <li><i class="fas fa-circle"></i> Management of extra-terrestrial resources and planetary protection</li>
+            <li><i class="fas fa-circle"></i> Commercial space tourism and safety</li>
+        </ul>
+        <div class="modal-section-label">Executive Board</div>
+        <div class="modal-eb-row">
+            <div class="modal-eb-chip"><div class="eb-avatar">AT</div><div><div class="eb-name">Aryan Thomas</div><div class="eb-role">Chair</div></div></div>
+            <div class="modal-eb-chip"><div class="eb-avatar">FJ</div><div><div class="eb-name">Fatema Juma</div><div class="eb-role">Vice Chair</div></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-fcc-avatar">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-fcc-avatar')"><i class="fas fa-times"></i></button>
+        <h3>Fictional Crisis Committee</h3>
+        <div class="modal-subtitle">Avatar: The Last Airbender · Junior Council</div>
+        <div class="modal-section-label">Overview</div>
+        <p>A fictional crisis committee set in the world of Avatar: The Last Airbender, where delegates navigate resource governance and infrastructure challenges across the four nations.</p>
+        <div class="modal-section-label">Agenda</div>
+        <ul>
+            <li><i class="fas fa-circle"></i> International control over emerging extractive industries</li>
+            <li><i class="fas fa-circle"></i> Promoting universal standards for clean water access and sanitation infrastructure in rural settlements</li>
+        </ul>
+        <div class="modal-section-label">Executive Board</div>
+        <div class="modal-eb-row">
+            <div class="modal-eb-chip"><div class="eb-avatar">MP</div><div><div class="eb-name">Meena Pillai</div><div class="eb-role">Chair</div></div></div>
+            <div class="modal-eb-chip"><div class="eb-avatar">HD</div><div><div class="eb-name">Hamad Al-Dosari</div><div class="eb-role">Vice Chair</div></div></div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== THEME LAB — live customizer, try colors/gradients/glass/fonts on the real site ===== -->
+<button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+<button id="themeLabToggle" title="Theme Lab"><i class="fas fa-palette"></i></button>
+<div id="themeLabDrawer">
+    <h4>Theme Lab <button class="tl-close-btn" id="tlCloseBtn"><i class="fas fa-times"></i></button></h4>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-fill-drip"></i> Gradient Colors</div>
+        <div class="tl-row"><label>Color 1</label><input type="color" id="tlNavy" value="#0A1128" /></div>
+        <div class="tl-row"><label>Color 2</label><input type="color" id="tlNavy2" value="#150f30" /></div>
+        <div class="tl-row"><label>Color 3</label><input type="color" id="tlViolet" value="#3a1768" /></div>
+        <div class="tl-row"><label>Color 4</label><input type="color" id="tlViolet2" value="#5b2a9e" /></div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-star"></i> Accent</div>
+        <div class="tl-row"><label>Gold</label><input type="color" id="tlGold" value="#D4AF37" /></div>
+        <div class="tl-row"><label>Gold Light</label><input type="color" id="tlGoldLight" value="#f0d78c" /></div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-arrows-alt"></i> Gradient Angle</div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Angle</span><span id="tlAngleVal">125°</span></div>
+            <input type="range" id="tlAngle" min="0" max="360" value="125" />
+        </div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-blender"></i> Glass Depth</div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Blur</span><span id="tlBlurVal">20px</span></div>
+            <input type="range" id="tlBlur" min="4" max="40" value="20" />
+        </div>
+        <div class="tl-slider-row">
+            <div class="tl-top"><span>Opacity</span><span id="tlOpacityVal">5.5%</span></div>
+            <input type="range" id="tlOpacity" min="0" max="20" value="5.5" step="0.5" />
+        </div>
+    </div>
+
+    <div class="tl-group">
+        <div class="tl-group-label"><i class="fas fa-font"></i> Font Pairing</div>
+        <select id="tlFontPair">
+            <option value="playfair-inter">Playfair Display + Inter</option>
+            <option value="cormorant-manrope">Cormorant Garamond + Manrope</option>
+            <option value="fraunces-work">Fraunces + Work Sans</option>
+            <option value="marcellus-jost">Marcellus + Jost</option>
+            <option value="baskerville-source">Libre Baskerville + Source Sans Pro</option>
+            <option value="bodoni-dm">Bodoni Moda + DM Sans</option>
+        </select>
+    </div>
+
+    <button class="tl-reset-btn" id="tlReset"><i class="fas fa-undo"></i> Reset to Default</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
