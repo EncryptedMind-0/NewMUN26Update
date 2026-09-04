@@ -361,7 +361,50 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('tlAngleVal').textContent = DEFAULTS.angle + '°';
         document.getElementById('tlBlurVal').textContent = DEFAULTS.blur + 'px';
         document.getElementById('tlOpacityVal').textContent = DEFAULTS.opacity + '%';
+        
+        // Reset theme preset buttons
+        document.querySelectorAll('.theme-preset-btn').forEach(btn => btn.classList.remove('active'));
     });
+    
+    // ===== THEME PRESETS =====
+    const themePresets = {
+        classic: { navy: '#0A1128', navy2: '#0d1730', violet: '#142b63', violet2: '#1b3f8a', gold: '#D4AF37', goldLight: '#f0d78c', name: 'Classic Navy' },
+        burgundy: { navy: '#1a0a0e', navy2: '#2d0f1a', violet: '#4a152b', violet2: '#6b1f3d', gold: '#c9a961', goldLight: '#e8d59a', name: 'Royal Burgundy' },
+        emerald: { navy: '#0a1f1a', navy2: '#0f2d24', violet: '#144a3a', violet2: '#1a6b55', gold: '#7ec8a8', goldLight: '#b5e5cd', name: 'Emerald Dream' },
+        royal: { navy: '#0d1221', navy2: '#1a1f3d', violet: '#2a2f6b', violet2: '#3d429e', gold: '#ffd700', goldLight: '#ffec8b', name: 'Midnight Royal' },
+        monochrome: { navy: '#0a0a0a', navy2: '#1a1a1a', violet: '#2a2a2a', violet2: '#3a3a3a', gold: '#silver', goldLight: '#e0e0e0', name: 'Monochrome' },
+        sunset: { navy: '#1a0f1a', navy2: '#2d1a2d', violet: '#4a2a4a', violet2: '#6b3a6b', gold: '#ff6b6b', goldLight: '#ffa5a5', name: 'Sunset Glow' }
+    };
+    
+    // Create preset buttons in Theme Lab
+    const presetsContainer = document.createElement('div');
+    presetsContainer.className = 'theme-presets';
+    presetsContainer.innerHTML = '<h4 style="color:var(--white);font-size:0.85rem;margin-bottom:12px;font-weight:600;">Quick Themes</h4><div class="preset-buttons"></div>';
+    const presetButtonsDiv = presetsContainer.querySelector('.preset-buttons');
+    
+    Object.entries(themePresets).forEach(([key, theme]) => {
+        const btn = document.createElement('button');
+        btn.className = 'theme-preset-btn';
+        btn.innerHTML = `<span class="preset-color" style="background:linear-gradient(135deg,${theme.navy},${theme.gold})"></span>${theme.name}`;
+        btn.addEventListener('click', () => {
+            root.style.setProperty('--navy', theme.navy);
+            root.style.setProperty('--navy-2', theme.navy2);
+            root.style.setProperty('--violet', theme.violet);
+            root.style.setProperty('--violet-2', theme.violet2);
+            root.style.setProperty('--gold', theme.gold);
+            root.style.setProperty('--gold-light', theme.goldLight);
+            applyGradient();
+            
+            // Update active state
+            document.querySelectorAll('.theme-preset-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+        presetButtonsDiv.appendChild(btn);
+    });
+    
+    // Insert presets after the reset button
+    const resetBtn = document.getElementById('tlReset');
+    if (resetBtn) resetBtn.parentNode.insertBefore(presetsContainer, resetBtn.nextSibling);
 });
 
 // ===== TIMELINE STAGE (homepage "Our Journey") =====
@@ -684,4 +727,135 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.modal-overlay.open').forEach(overlay => closeModal(overlay.id));
         }
     });
+});
+
+// ===== PARTICLE NETWORK BACKGROUND (interactive constellation effect) =====
+document.addEventListener('DOMContentLoaded', function () {
+    const container = document.getElementById('particleNetwork');
+    if (!container) return;
+
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 50 : 90;
+    const connectionDistance = isMobile ? 120 : 160;
+    const mouseDistance = isMobile ? 150 : 200;
+
+    let particles = [];
+    let mouseX = null, mouseY = null;
+    let canvas, ctx, width, height;
+
+    // Create canvas
+    canvas = document.createElement('canvas');
+    container.appendChild(canvas);
+    ctx = canvas.getContext('2d');
+
+    function resize() {
+        width = canvas.width = container.offsetWidth;
+        height = canvas.height = container.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Track mouse
+    container.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+    });
+    container.addEventListener('mouseleave', () => {
+        mouseX = null;
+        mouseY = null;
+    });
+
+    // Particle class
+    class Particle {
+        constructor() {
+            this.reset();
+        }
+
+        reset() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.vx = (Math.random() - 0.5) * 0.4;
+            this.vy = (Math.random() - 0.5) * 0.4;
+            this.radius = Math.random() * 2 + 1;
+            this.baseAlpha = Math.random() * 0.3 + 0.2;
+        }
+
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+
+            // Bounce off edges
+            if (this.x < 0 || this.x > width) this.vx *= -1;
+            if (this.y < 0 || this.y > height) this.vy *= -1;
+
+            // Mouse interaction
+            if (mouseX !== null && mouseY !== null) {
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < mouseDistance) {
+                    const force = (mouseDistance - dist) / mouseDistance;
+                    const angle = Math.atan2(dy, dx);
+                    const pushX = Math.cos(angle) * force * 0.8;
+                    const pushY = Math.sin(angle) * force * 0.8;
+                    this.vx -= pushX * 0.02;
+                    this.vy -= pushY * 0.02;
+                }
+            }
+
+            // Limit velocity
+            const maxSpeed = 0.8;
+            const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+            if (speed > maxSpeed) {
+                this.vx = (this.vx / speed) * maxSpeed;
+                this.vy = (this.vy / speed) * maxSpeed;
+            }
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(212, 175, 55, ${this.baseAlpha})`;
+            ctx.fill();
+        }
+    }
+
+    // Initialize particles
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
+
+    // Animation loop
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Update and draw particles
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < connectionDistance) {
+                    const alpha = (1 - dist / connectionDistance) * 0.2;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(212, 175, 55, ${alpha})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.stroke();
+                }
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+    animate();
 });

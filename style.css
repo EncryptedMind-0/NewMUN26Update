@@ -1041,6 +1041,23 @@ button:active,
     transform: scale(1.08) rotate(18deg);
     box-shadow: 0 12px 32px rgba(212,175,55,0.55), 0 4px 12px rgba(0,0,0,0.35);
 }
+#themeLabToggle::after {
+    content: 'Customize';
+    position: absolute;
+    bottom: -24px;
+    right: 0;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--gold);
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: all 0.3s var(--ease);
+}
+#themeLabToggle:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 #themeLabDrawer {
     position: fixed;
@@ -1158,6 +1175,42 @@ button:active,
     margin-top: 4px;
 }
 .tl-reset-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ===== THEME PRESETS ===== */
+.theme-presets { margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.08); }
+.preset-buttons { display: flex; flex-direction: column; gap: 8px; }
+.theme-preset-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.03);
+    color: var(--white);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    text-align: left;
+}
+.theme-preset-btn:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(212,175,55,0.4);
+    transform: translateX(4px);
+}
+.theme-preset-btn.active {
+    background: rgba(212,175,55,0.15);
+    border-color: var(--gold);
+}
+.preset-color {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.2);
+    flex-shrink: 0;
+}
 
 @media (max-width: 480px) {
     #themeLabToggle { bottom: 16px; right: 16px; width: 48px; height: 48px; }
