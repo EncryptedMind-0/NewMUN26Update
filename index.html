@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NewMUN 2026 | Home</title>
 
-    <!-- Social share preview (Open Graph + Twitter Card).
-         Replace YOUR-DOMAIN-HERE with your real domain once the site is deployed,
-         so shared links on WhatsApp/Instagram/Twitter show the logo + description correctly. -->
+    
     <meta property="og:type" content="website" />
     <meta property="og:title" content="NewMUN 2026 | Bridging Horizons, Shaping Futures" />
     <meta property="og:description" content="Bahrain's premier student Model United Nations conference — 9 councils, 400+ delegates, 3–4 October 2026." />
@@ -19,7 +17,7 @@
     <meta name="twitter:image" content="https://YOUR-DOMAIN-HERE.com/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Browser tab icon (proper sizes generated from the NewMUN logo) -->
+    
     <link rel="icon" href="favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
@@ -525,10 +523,10 @@
     </style>
 </head>
 <body>
-<!-- Decorative wavy background lines — built dynamically in script.js so they tile seamlessly -->
+
 <div class="wave-bg" id="waveBg" aria-hidden="true"></div>
 
-<!-- Loading screen: book-reveal transition, removes itself once the page has loaded -->
+
 <noscript><style>#loader{display:none !important;}</style></noscript>
 <div id="loader">
     <div class="loader-half left"></div>
@@ -544,7 +542,6 @@
 </div>
 
 
-<!-- ===== NAVBAR ===== -->
 <nav class="navbar" id="navbar">
     <div class="container">
         <a href="index.html" class="nav-logo">
@@ -561,7 +558,7 @@
             <li><a href="faq-resources.html">FAQ & Resources</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="sponsors.html">Sponsors</a></li>
-            <li><a href="register.html" class="btn-outline">Register</a></li>
+            <li><a href="register.html" class="btn-outline btn-glow">Register Now</a></li>
         </ul>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
             <span></span><span></span><span></span>
@@ -569,7 +566,7 @@
     </div>
 </nav>
 
-<!-- ===== HERO ===== -->
+
 <section class="hero" id="home">
     <div class="container">
         <div class="hero-content">
@@ -627,13 +624,7 @@
     </svg>
 </section>
 
-<!-- ===== LEGACY OF EXCELLENCE ===== -->
-<!--
-    TIMELINE MILESTONES — placeholder history for 2018-2025.
-    Replace the data-desc text on each .tl-node button with your real milestones.
-    To add a real photo: replace the <i> icon inside #tlStageMedia (set via JS from data-icon)
-    with an <img>, or point the JS at data-image URLs instead of icon classes.
--->
+
 <section id="journey">
     <div class="container">
         <div class="section-title-center reveal" style="margin-bottom:44px;">
@@ -694,7 +685,7 @@
     </div>
 </section>
 
-<!-- ===== PRINCIPAL'S MESSAGE ===== -->
+
 <section id="message">
     <div class="container">
         <div class="section-title-center reveal">
@@ -725,7 +716,7 @@
     </div>
 </section>
 
-<!-- ===== COUNCILS PREVIEW ===== -->
+
 <section id="councils-preview">
     <div class="container">
         <div class="section-title-center reveal">
@@ -765,7 +756,7 @@
     </div>
 </section>
 
-<!-- ===== TESTIMONIALS ===== -->
+
 <section id="testimonials">
     <div class="container">
         <div class="section-title-center reveal">
@@ -792,7 +783,7 @@
     </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+
 <footer class="site-footer" style="padding:48px 0 32px;">
     <div class="container">
         <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;">
@@ -849,9 +840,9 @@
     </div>
 </footer>
 
-<!-- ===== THEME LAB — live customizer, try colors/gradients/glass/fonts on the real site ===== -->
+
 <button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
-<button id="themeLabToggle" title="Theme Lab"><i class="fas fa-palette"></i></button>
+<button id="themeLabToggle" class="theme-lab-btn" title="Theme Lab — Customize colors, fonts & more"><i class="fas fa-palette"></i></button>
 <div id="themeLabDrawer">
     <h4>Theme Lab <button class="tl-close-btn" id="tlCloseBtn"><i class="fas fa-times"></i></button></h4>
 
@@ -903,6 +894,9 @@
 
     <button class="tl-reset-btn" id="tlReset"><i class="fas fa-undo"></i> Reset to Default</button>
 </div>
+
+
+<div id="particleNetwork" style="position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;"></div>
 
 <script src="script.js"></script>
 </body>
