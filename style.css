@@ -1,11 +1,7 @@
-/* =========================================================
-   NewMUN 2026 — Stylesheet
-   Theme: Dark glass / animated pure-navy gradient
-   Fonts: Playfair Display (display) + Inter (body/UI)
-========================================================= */
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-/* ===== RESET & BASE ===== */
+
 * {
     margin: 0;
     padding: 0;
@@ -55,10 +51,7 @@ body {
     position: relative;
 }
 
-/* Sitewide background texture — dot-grid + soft vignette, so plain sections
-   (not just the homepage hero) don't read as flat/blank. Sits behind all content. */
-/* Sitewide flowing wave lines — real seamless horizontal scroll, not just a wobble.
-   Layers are built in JS (see script.js) so each wave tiles perfectly and never jumps. */
+
 .wave-bg {
     position: fixed;
     inset: 0;
@@ -124,7 +117,7 @@ h1, h2, h3, h4, .font-display {
     padding: 0 24px;
 }
 
-/* ===== GLASSMORPHISM CARD SYSTEM ===== */
+
 .glass, .glass-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
@@ -143,7 +136,7 @@ h1, h2, h3, h4, .font-display {
     box-shadow: var(--shadow-lg), 0 0 36px rgba(79,141,253,0.16);
 }
 
-/* ===== SCROLL REVEAL ===== */
+
 .reveal {
     opacity: 0;
     transform: translateY(48px);
@@ -172,7 +165,7 @@ h1, h2, h3, h4, .font-display {
 .reveal-stagger.visible .stagger-child:nth-child(7) { transition-delay: 0.50s; }
 .reveal-stagger.visible .stagger-child:nth-child(8) { transition-delay: 0.58s; }
 
-/* ===== FLOATING / MOTION ===== */
+
 @keyframes float {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
     50% { transform: translateY(-16px) rotate(1deg); }
@@ -199,7 +192,7 @@ h1, h2, h3, h4, .font-display {
     animation: float 3.4s ease-in-out infinite;
 }
 
-/* ===== BUTTONS ===== */
+
 .btn-primary {
     position: relative;
     display: inline-flex;
@@ -296,7 +289,7 @@ h1, h2, h3, h4, .font-display {
     100% { background-position: 200% 50%; }
 }
 
-/* ===== NAVBAR (always glass) ===== */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -416,7 +409,7 @@ h1, h2, h3, h4, .font-display {
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
-/* ===== SITE FOOTER (always glass) ===== */
+
 .site-footer {
     background: linear-gradient(160deg, rgba(10,17,40,0.82), rgba(58,23,104,0.55));
     backdrop-filter: blur(22px) saturate(150%);
@@ -426,7 +419,7 @@ h1, h2, h3, h4, .font-display {
     box-shadow: 0 -8px 40px rgba(0,0,0,0.25);
 }
 
-/* ===== PAGE HEADER ===== */
+
 .page-header {
     background: linear-gradient(150deg, var(--navy) 0%, var(--violet) 55%, var(--navy-2) 130%);
     padding: 150px 0 64px;
@@ -480,7 +473,7 @@ h1, h2, h3, h4, .font-display {
     z-index: 1;
 }
 
-/* ===== SECTION COMMON ===== */
+
 section {
     padding: 96px 0;
     position: relative;
@@ -521,7 +514,7 @@ section {
     margin-bottom: 18px;
 }
 
-/* ===== TILT CARDS (3D perspective) ===== */
+
 .tilt-wrap {
     perspective: 1200px;
 }
@@ -531,12 +524,12 @@ section {
     will-change: transform;
 }
 
-/* ===== COUNTERS ===== */
+
 .count-num {
     font-variant-numeric: tabular-nums;
 }
 
-/* ===== TOGGLE SWITCH (Senior / Junior councils) ===== */
+
 .council-toggle {
     display: flex;
     justify-content: center;
@@ -602,7 +595,7 @@ section {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== GALLERY FILTER TABS ===== */
+
 .gallery-tabs {
     display: flex;
     justify-content: center;
@@ -642,7 +635,7 @@ section {
     animation: panelIn 0.45s var(--ease);
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 992px) {
     .page-header h1 {
         font-size: 2.4rem;
@@ -652,8 +645,7 @@ section {
     }
 }
 
-/* Nav collapses earlier (1040px) than content sizing (768px) so 7 nav items
-   never overflow/get clipped on mid-size laptop screens. */
+
 @media (max-width: 1040px) {
     .nav-links {
         display: none;
@@ -709,10 +701,7 @@ section {
     .toggle-option span { display: none; }
 }
 
-/* =========================================================
-   MODAL SYSTEM — shared by OC bios and Council "Know More"
-   Contained overlay/popup, does NOT push page layout around.
-========================================================= */
+
 .modal-overlay {
     display: none;
     position: fixed;
@@ -861,10 +850,7 @@ section {
     .modal-eb-row { flex-direction: column; }
 }
 
-/* =========================================================
-   LOADING SCREEN — book-reveal transition on first paint.
-   Two panels split apart from center, logo pulses while waiting.
-========================================================= */
+
 #loader {
     position: fixed;
     inset: 0;
@@ -901,8 +887,7 @@ section {
 #loader.loader-hidden .loader-half.left { transform: translateX(-100%); }
 #loader.loader-hidden .loader-half.right { transform: translateX(100%); }
 
-/* Repeat internal navigation within the same session: skip the slow book-reveal,
-   just fade quickly so clicking between pages doesn't feel sluggish. */
+
 #loader.loader-fastskip { transition: opacity 0.2s ease; }
 #loader.loader-fastskip.loader-hidden { opacity: 0; }
 #loader.loader-fastskip .loader-half,
@@ -981,17 +966,13 @@ section {
     transition: width 1.6s ease;
 }
 
-/* Body lock while loader is active, prevents scroll flash underneath */
+
 body.loading {
     overflow: hidden;
     height: 100vh;
 }
 
-/* =========================================================
-   UNIVERSAL CLICK FEEDBACK
-   Every clickable surface gets a quick "press" animation.
-   Placed last so :active wins over hover-lift while pressed.
-========================================================= */
+
 button,
 .btn-primary, .btn-secondary, .btn-outline,
 .tilt-card, .toggle-option, .gallery-tab,
@@ -1015,9 +996,7 @@ button:active,
     opacity: 0.6;
 }
 
-/* =========================================================
-   THEME LAB — live in-site color/gradient/glass/font customizer
-========================================================= */
+
 #themeLabToggle {
     position: fixed;
     bottom: 24px;
@@ -1176,7 +1155,7 @@ button:active,
 }
 .tl-reset-btn:hover { border-color: var(--gold); color: var(--gold); }
 
-/* ===== THEME PRESETS ===== */
+
 .theme-presets { margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.08); }
 .preset-buttons { display: flex; flex-direction: column; gap: 8px; }
 .theme-preset-btn {
@@ -1216,9 +1195,7 @@ button:active,
     #themeLabToggle { bottom: 16px; right: 16px; width: 48px; height: 48px; }
 }
 
-/* =========================================================
-   BACK-TO-TOP SCROLL ARROW
-========================================================= */
+
 #backToTop {
     position: fixed;
     bottom: 24px;

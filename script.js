@@ -1,9 +1,6 @@
-// =========================================================
-// NewMUN 2026 — Site scripts
-// Vanilla JS: nav, scroll reveals, counters, particle network, tilt
-// =========================================================
 
-// ===== HAMBURGER MENU =====
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
@@ -23,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// ===== ACTIVE NAV LINK =====
 document.addEventListener('DOMContentLoaded', function () {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-links a:not(.btn-outline)');
@@ -36,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// ===== NAVBAR GLASS-MORPHISM ON SCROLL =====
 document.addEventListener('DOMContentLoaded', function () {
     const navbar = document.getElementById('navbar');
     if (!navbar) return;
@@ -52,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', toggleNavbar, { passive: true });
 });
 
-// ===== COUNTDOWN TIMER =====
 function updateCountdown() {
     const target = new Date('October 3, 2026 08:00:00 GMT+3').getTime();
     const now = new Date().getTime();
@@ -86,7 +80,6 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-// ===== SCROLL-TRIGGERED REVEALS (IntersectionObserver) =====
 document.addEventListener('DOMContentLoaded', function () {
     const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
     if (!revealEls.length) return;
@@ -103,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
     revealEls.forEach(el => io.observe(el));
 });
 
-// ===== ANIMATED COUNTERS =====
 document.addEventListener('DOMContentLoaded', function () {
     const counters = document.querySelectorAll('.count-num[data-target]');
     if (!counters.length) return;
@@ -116,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function tick(now) {
             const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
             const value = Math.floor(eased * target);
             el.textContent = value + suffix;
             if (progress < 1) {
@@ -140,7 +132,6 @@ document.addEventListener('DOMContentLoaded', function () {
     counters.forEach(el => counterIO.observe(el));
 });
 
-// ===== FAQ ACCORDION (used on faq-resources.html) =====
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.faq-item .question').forEach(q => {
         q.addEventListener('click', () => {
@@ -149,10 +140,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// ===== 3D TILT ON HOVER (cards with class "tilt-card") =====
 document.addEventListener('DOMContentLoaded', function () {
     const isTouch = window.matchMedia('(hover: none)').matches;
-    if (isTouch) return; // skip tilt on touch devices
+    if (isTouch) return;
 
     const cards = document.querySelectorAll('.tilt-card');
     cards.forEach(card => {
@@ -172,13 +162,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// ===== FLOWING WAVE BACKGROUND (seamless loop, built for perfect tiling) =====
 document.addEventListener('DOMContentLoaded', function () {
     const container = document.getElementById('waveBg');
     if (!container) return;
 
-    // Builds a smooth repeating wave path. `width` MUST be an exact multiple of `period`
-    // so that shifting the whole layer left by exactly one `period` loops with zero seam.
+
     function wavePath(width, period, amp, baseline) {
         const periods = width / period;
         let d = `M0,${baseline}`;
@@ -198,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const svgNS = 'http://www.w3.org/2000/svg';
 
     layers.forEach(layer => {
-        const totalWidth = layer.period * 24; // wide enough for ultra-wide screens, always a clean multiple of period
+        const totalWidth = layer.period * 24;
 
         const wrap = document.createElement('div');
         wrap.className = 'wave-layer';
@@ -225,7 +213,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// ===== BACK-TO-TOP SCROLL ARROW =====
 document.addEventListener('DOMContentLoaded', function () {
     const btn = document.getElementById('backToTop');
     if (!btn) return;
@@ -237,7 +224,6 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 });
 
-// ===== THEME LAB (live color / gradient / glass / font customizer) =====
 document.addEventListener('DOMContentLoaded', function () {
     const toggleBtn = document.getElementById('themeLabToggle');
     const drawer = document.getElementById('themeLabDrawer');
@@ -361,12 +347,10 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('tlAngleVal').textContent = DEFAULTS.angle + '°';
         document.getElementById('tlBlurVal').textContent = DEFAULTS.blur + 'px';
         document.getElementById('tlOpacityVal').textContent = DEFAULTS.opacity + '%';
-        
-        // Reset theme preset buttons
+
         document.querySelectorAll('.theme-preset-btn').forEach(btn => btn.classList.remove('active'));
     });
-    
-    // ===== THEME PRESETS =====
+
     const themePresets = {
         classic: { navy: '#0A1128', navy2: '#0d1730', violet: '#142b63', violet2: '#1b3f8a', gold: '#D4AF37', goldLight: '#f0d78c', name: 'Classic Navy' },
         burgundy: { navy: '#1a0a0e', navy2: '#2d0f1a', violet: '#4a152b', violet2: '#6b1f3d', gold: '#c9a961', goldLight: '#e8d59a', name: 'Royal Burgundy' },
@@ -375,8 +359,7 @@ document.addEventListener('DOMContentLoaded', function () {
         monochrome: { navy: '#0a0a0a', navy2: '#1a1a1a', violet: '#2a2a2a', violet2: '#3a3a3a', gold: '#silver', goldLight: '#e0e0e0', name: 'Monochrome' },
         sunset: { navy: '#1a0f1a', navy2: '#2d1a2d', violet: '#4a2a4a', violet2: '#6b3a6b', gold: '#ff6b6b', goldLight: '#ffa5a5', name: 'Sunset Glow' }
     };
-    
-    // Create preset buttons in Theme Lab
+
     const presetsContainer = document.createElement('div');
     presetsContainer.className = 'theme-presets';
     presetsContainer.innerHTML = '<h4 style="color:var(--white);font-size:0.85rem;margin-bottom:12px;font-weight:600;">Quick Themes</h4><div class="preset-buttons"></div>';
@@ -394,20 +377,17 @@ document.addEventListener('DOMContentLoaded', function () {
             root.style.setProperty('--gold', theme.gold);
             root.style.setProperty('--gold-light', theme.goldLight);
             applyGradient();
-            
-            // Update active state
+
             document.querySelectorAll('.theme-preset-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
         });
         presetButtonsDiv.appendChild(btn);
     });
-    
-    // Insert presets after the reset button
+
     const resetBtn = document.getElementById('tlReset');
     if (resetBtn) resetBtn.parentNode.insertBefore(presetsContainer, resetBtn.nextSibling);
 });
 
-// ===== TIMELINE STAGE (homepage "Our Journey") =====
 document.addEventListener('DOMContentLoaded', function () {
     const wrap = document.getElementById('timelineModern');
     if (!wrap) return;
@@ -453,7 +433,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// ===== COUNCIL TOGGLE (Senior / Junior) =====
 document.addEventListener('DOMContentLoaded', function () {
     const track = document.getElementById('councilToggle');
     if (!track) return;
@@ -471,7 +450,6 @@ document.addEventListener('DOMContentLoaded', function () {
         seniorPanel.classList.toggle('active', isSenior);
         juniorPanel.classList.toggle('active', !isSenior);
 
-        // Re-trigger stagger reveal animation on the panel that just appeared
         const panel = isSenior ? seniorPanel : juniorPanel;
         const staggerEls = panel.querySelectorAll('.reveal-stagger');
         staggerEls.forEach(el => el.classList.add('visible'));
@@ -481,7 +459,6 @@ document.addEventListener('DOMContentLoaded', function () {
     juniorBtn.addEventListener('click', () => setActive('junior'));
 });
 
-// ===== GALLERY FILTER TABS =====
 document.addEventListener('DOMContentLoaded', function () {
     const tabs = document.querySelectorAll('.gallery-tab');
     if (!tabs.length) return;
@@ -503,12 +480,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Initialize with whichever tab is marked active in the HTML
     const initial = document.querySelector('.gallery-tab.active');
     applyFilter(initial ? initial.getAttribute('data-filter') : 'all');
 });
 
-// ===== HERO PARTICLE / DIPLOMATIC NETWORK CANVAS =====
 document.addEventListener('DOMContentLoaded', function () {
     const canvas = document.getElementById('networkCanvas');
     if (!canvas) return;
@@ -579,10 +554,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// ===== LOADING SCREEN (book-reveal) =====
 (function () {
-    // Only play the full sequence once per browser session — after the first page,
-    // internal navigation gets a quick fade instead of the whole animation replaying.
+
+
     const SESSION_KEY = 'newmunLoaderSeen';
     const hasSeenLoader = sessionStorage.getItem(SESSION_KEY) === '1';
 
@@ -598,7 +572,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let msgTimer = null;
 
     function startLoaderSequence() {
-        if (hasSeenLoader) return; // skip message cycling + progress bar on repeat visits
+        if (hasSeenLoader) return;
         const tagline = document.getElementById('loaderTagline');
         const fill = document.getElementById('loaderProgressFill');
         if (fill) requestAnimationFrame(() => { fill.style.width = '100%'; });
@@ -640,11 +614,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (half && !hasSeenLoader) {
             half.addEventListener('transitionend', remove, { once: true });
         }
-        // Backup in case transitionend doesn't fire (reduced-motion, fast-skip, etc.)
+
         setTimeout(remove, hasSeenLoader ? 220 : 1100);
     }
 
-    // GSAP hero entrance — plays the instant the loader reveals the page (index.html only)
     function playHeroEntrance() {
         const heroContent = document.querySelector('.hero-content');
         const heroLogo = document.querySelector('.hero-logo');
@@ -664,7 +637,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 ease: 'power3.out'
             });
         } else {
-            // No-GSAP fallback: simple CSS fade so content still appears correctly
+
             targets.forEach(el => { el.style.opacity = '1'; });
         }
     }
@@ -675,11 +648,9 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(dismissLoader, wait);
     });
 
-    // Failsafe: never let the loader block the site if 'load' is delayed or JS partially fails
     setTimeout(dismissLoader, 4000);
 })();
 
-// ===== PAGE TABLE OF CONTENTS (scroll-spy) =====
 document.addEventListener('DOMContentLoaded', function () {
     const toc = document.getElementById('pageToc');
     if (!toc) return;
@@ -701,7 +672,6 @@ document.addEventListener('DOMContentLoaded', function () {
     targets.forEach(t => spy.observe(t));
 });
 
-// ===== SHARED MODAL SYSTEM (OC bios, Council "Know More") =====
 function openModal(id) {
     const overlay = document.getElementById(id);
     if (!overlay) return;
@@ -715,13 +685,13 @@ function closeModal(id) {
     document.body.style.overflow = '';
 }
 document.addEventListener('DOMContentLoaded', function () {
-    // Click outside the modal box (on the dark overlay) closes it
+
     document.querySelectorAll('.modal-overlay').forEach(overlay => {
         overlay.addEventListener('click', (e) => {
             if (e.target === overlay) closeModal(overlay.id);
         });
     });
-    // Escape key closes whichever modal is open
+
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             document.querySelectorAll('.modal-overlay.open').forEach(overlay => closeModal(overlay.id));
@@ -729,7 +699,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// ===== PARTICLE NETWORK BACKGROUND (interactive constellation effect) =====
 document.addEventListener('DOMContentLoaded', function () {
     const container = document.getElementById('particleNetwork');
     if (!container) return;
@@ -743,7 +712,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let mouseX = null, mouseY = null;
     let canvas, ctx, width, height;
 
-    // Create canvas
     canvas = document.createElement('canvas');
     container.appendChild(canvas);
     ctx = canvas.getContext('2d');
@@ -755,7 +723,6 @@ document.addEventListener('DOMContentLoaded', function () {
     resize();
     window.addEventListener('resize', resize);
 
-    // Track mouse
     container.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouseX = e.clientX - rect.left;
@@ -766,7 +733,6 @@ document.addEventListener('DOMContentLoaded', function () {
         mouseY = null;
     });
 
-    // Particle class
     class Particle {
         constructor() {
             this.reset();
@@ -785,11 +751,9 @@ document.addEventListener('DOMContentLoaded', function () {
             this.x += this.vx;
             this.y += this.vy;
 
-            // Bounce off edges
             if (this.x < 0 || this.x > width) this.vx *= -1;
             if (this.y < 0 || this.y > height) this.vy *= -1;
 
-            // Mouse interaction
             if (mouseX !== null && mouseY !== null) {
                 const dx = mouseX - this.x;
                 const dy = mouseY - this.y;
@@ -804,7 +768,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
-            // Limit velocity
             const maxSpeed = 0.8;
             const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
             if (speed > maxSpeed) {
@@ -821,22 +784,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Initialize particles
     for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
     }
 
-    // Animation loop
     function animate() {
         ctx.clearRect(0, 0, width, height);
 
-        // Update and draw particles
         particles.forEach(p => {
             p.update();
             p.draw();
         });
 
-        // Draw connections
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
