@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NewMUN 2026 | Sponsors</title>
 
-    <!-- Social share preview (Open Graph + Twitter Card).
-         Replace YOUR-DOMAIN-HERE with your real domain once the site is deployed,
-         so shared links on WhatsApp/Instagram/Twitter show the logo + description correctly. -->
+    
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Sponsors | NewMUN 2026" />
     <meta property="og:description" content="Meet our sponsors and partners, and learn how your organization can support NewMUN 2026." />
@@ -19,7 +17,7 @@
     <meta name="twitter:image" content="https://YOUR-DOMAIN-HERE.com/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Browser tab icon (proper sizes generated from the NewMUN logo) -->
+    
     <link rel="icon" href="favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
@@ -174,10 +172,10 @@
     </style>
 </head>
 <body>
-<!-- Decorative wavy background lines — built dynamically in script.js so they tile seamlessly -->
+
 <div class="wave-bg" id="waveBg" aria-hidden="true"></div>
 
-<!-- Loading screen: book-reveal transition, removes itself once the page has loaded -->
+
 <noscript><style>#loader{display:none !important;}</style></noscript>
 <div id="loader">
     <div class="loader-half left"></div>
@@ -193,7 +191,6 @@
 </div>
 
 
-<!-- ===== NAVBAR ===== -->
 <nav class="navbar" id="navbar">
     <div class="container">
         <a href="index.html" class="nav-logo">
@@ -218,7 +215,7 @@
     </div>
 </nav>
 
-<!-- ===== PAGE HEADER ===== -->
+
 <header class="page-header">
     <div class="container">
         <h1>Our <span class="highlight">Sponsors</span></h1>
@@ -229,24 +226,11 @@
     </svg>
 </header>
 
-<!--
-    SPONSOR LOGOS — HOW TO ADD YOUR OWN
-    =====================================
-    Each .sponsor-logo below is a placeholder circle with initials. To swap in a real logo:
-      1. Save the sponsor's logo file into an "images/sponsors/" folder next to this HTML file.
-      2. Replace the placeholder text inside .sponsor-logo with an <img> tag, e.g.:
-         <div class="sponsor-logo" style="background:#fff;">
-             <img src="images/sponsors/acme-corp.png" alt="Acme Corp" style="width:70%;object-fit:contain;" />
-         </div>
-      3. Duplicate a .sponsor-card block for each additional sponsor in that tier.
-      4. All names below (Gulf Capital Group, Bahrain Holdings, etc.) are PLACEHOLDERS — replace with your real sponsors.
--->
 
-<!-- ===== SPONSOR TIERS ===== -->
 <section>
     <div class="container">
 
-        <!-- PLATINUM -->
+        
         <div class="tier-group reveal">
             <div class="tier-header">
                 <span class="tier-badge platinum"><i class="fas fa-crown"></i> Platinum</span>
@@ -266,7 +250,7 @@
             </div>
         </div>
 
-        <!-- GOLD -->
+        
         <div class="tier-group">
             <div class="tier-header reveal">
                 <span class="tier-badge gold"><i class="fas fa-medal"></i> Gold</span>
@@ -291,7 +275,7 @@
             </div>
         </div>
 
-        <!-- SILVER -->
+        
         <div class="tier-group">
             <div class="tier-header reveal">
                 <span class="tier-badge silver"><i class="fas fa-award"></i> Silver</span>
@@ -320,7 +304,7 @@
     </div>
 </section>
 
-<!-- ===== BECOME A SPONSOR ===== -->
+
 <section id="become-sponsor">
     <div class="container">
         <div class="sponsor-cta reveal">
@@ -362,7 +346,7 @@
     </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+
 <footer class="site-footer" style="padding:48px 0 32px;">
     <div class="container">
         <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;">
@@ -419,7 +403,7 @@
     </div>
 </footer>
 
-<!-- ===== THEME LAB — live customizer, try colors/gradients/glass/fonts on the real site ===== -->
+
 <button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
 <button id="themeLabToggle" title="Theme Lab"><i class="fas fa-palette"></i></button>
 <div id="themeLabDrawer">
@@ -473,6 +457,8 @@
 
     <button class="tl-reset-btn" id="tlReset"><i class="fas fa-undo"></i> Reset to Default</button>
 </div>
+
+<div id="particleNetwork" style="position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;"></div>
 
 <script src="script.js"></script>
 </body>
