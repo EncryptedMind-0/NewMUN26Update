@@ -27,97 +27,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <link rel="stylesheet" href="style.css" />
     <style>
-        .price-wrap {
-            max-width: 920px;
-            margin: 0 auto;
-        }
-        .price-card {
-            background: linear-gradient(155deg, var(--navy) 0%, var(--navy-2) 45%, var(--violet) 110%, var(--violet-2) 160%);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(22px) saturate(150%);
-            -webkit-backdrop-filter: blur(22px) saturate(150%);
-            border-radius: 28px;
-            padding: 56px;
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-        .price-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 85% 15%, rgba(212,175,55,0.16), transparent 55%);
-        }
-        .price-card::after {
-            content: '';
-            position: absolute;
-            width: 320px;
-            height: 320px;
-            border-radius: 50%;
-            border: 1px dashed rgba(212,175,55,0.2);
-            top: -140px;
-            right: -100px;
-            animation: spinSlow 50s linear infinite;
-        }
-        .price-card > * { position: relative; z-index: 1; }
-
-        .price-top {
+        .coming-soon-section {
+            min-height: 60vh;
             display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: wrap;
-            gap: 24px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 32px;
-            margin-bottom: 32px;
-        }
-        .price-tag {
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
-        }
-        .price-tag .amount {
-            font-family: var(--font-heading), serif;
-            font-size: 4.2rem;
-            font-weight: 800;
-            color: var(--gold);
-            line-height: 1;
-        }
-        .price-tag .currency {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--gold-light);
-        }
-        .price-tag .per {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.95rem;
-            align-self: center;
-            margin-left: 4px;
-        }
-        .price-eyebrow {
-            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            color: var(--gold);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
+            padding: 80px 0;
         }
-
-        /* ===== THREE REGISTRATION OPTIONS ===== */
-        .register-options {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-            max-width: 1100px;
+        .coming-soon-card {
+            text-align: center;
+            max-width: 640px;
             margin: 0 auto;
+            padding: 48px 32px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
         }
-        .register-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
+        .coming-soon-message {
+            color: var(--gray);
+            font-size: 1.05rem;
+            margin-top: 20px;
+            line-height: 1.7;
+        }
+    </style>
             backdrop-filter: blur(22px) saturate(150%);
             -webkit-backdrop-filter: blur(22px) saturate(150%);
             border-radius: 24px;
@@ -326,7 +258,7 @@
             <li><a href="oc.html">OC</a></li>
             <li><a href="faq-resources.html">FAQ & Resources</a></li>
             <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="sponsors.html">Sponsors</a></li>
+            
             <li><a href="register.html" class="btn-outline active">Register</a></li>
         </ul>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -347,90 +279,11 @@
 </header>
 
 
-<section id="register">
+<section class="coming-soon-section">
     <div class="container">
-        <div class="section-title-center reveal" style="margin-bottom:48px;">
-            <span class="eyebrow"><i class="fas fa-ticket-alt"></i> Choose Your Path</span>
-            <h2 class="section-title">Registration <span class="highlight">Options</span></h2>
-            <p class="section-subtitle" style="margin:0 auto;">Conference dates: 3–4 October 2026</p>
-        </div>
-
-        <div class="register-options tilt-wrap reveal-stagger">
-            
-            <div class="register-card tilt-card stagger-child">
-                <div class="reg-icon"><i class="fas fa-child"></i></div>
-                <h3>Junior Delegate</h3>
-                <div class="reg-grade">Grades 5 – 7</div>
-                <div class="reg-price"><span class="count-num" data-target="16">0</span> <small>BHD</small></div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Access to all Junior Councils</li>
-                    <li><i class="fas fa-check"></i> Custom delegate ID</li>
-                    <li><i class="fas fa-check"></i> Certificate of participation</li>
-                    <li><i class="fas fa-check"></i> Lunch included, both days</li>
-                </ul>
-                
-                <a href="https://forms.gle/PASTE_YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" rel="noopener" class="btn-secondary" style="text-align:center;">
-                    Register as Junior <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
-            
-            <div class="register-card tilt-card stagger-child">
-                <div class="reg-icon"><i class="fas fa-user-graduate"></i></div>
-                <h3>Senior Delegate</h3>
-                <div class="reg-grade">Grades 8 – 12</div>
-                <div class="reg-price"><span class="count-num" data-target="16">0</span> <small>BHD</small></div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Access to all Senior Councils</li>
-                    <li><i class="fas fa-check"></i> Custom delegate ID</li>
-                    <li><i class="fas fa-check"></i> Certificate of participation</li>
-                    <li><i class="fas fa-check"></i> Lunch included, both days</li>
-                </ul>
-                <a href="https://forms.gle/PASTE_YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" rel="noopener" class="btn-primary btn-glow" style="text-align:center; justify-content:center;">
-                    Register as Senior <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
-            
-            <div class="register-card chair-card tilt-card stagger-child">
-                <div class="reg-icon"><i class="fas fa-gavel"></i></div>
-                <h3>Chair</h3>
-                <div class="reg-grade">By application &middot; open to past delegates</div>
-                <div class="reg-price" style="font-size:1.3rem;">Apply <small>— no fee</small></div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Lead a committee's debate &amp; procedure</li>
-                    <li><i class="fas fa-check"></i> Leadership certificate &amp; reference letter</li>
-                    <li><i class="fas fa-check"></i> Executive Board listing on the Councils page</li>
-                    <li><i class="fas fa-check"></i> Lunch included, both days</li>
-                </ul>
-                
-                <a href="mailto:newmun@nisbh.com?subject=NewMUN%202026%20Chair%20Application" class="btn-outline" style="text-align:center;">
-                    Apply to Chair <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-
-        <p class="reveal" style="text-align:center;color:var(--gray);font-size:0.85rem;margin-top:28px;">
-            Registration closes 20 September 2026 · Early-bird pricing available until 31 August 2026 ·
-            School coordinators can request group registration at <a href="mailto:newmun@nisbh.com" style="color:var(--gold-light);">newmun@nisbh.com</a>
-        </p>
-
-        <div class="steps-grid tilt-wrap reveal-stagger">
-            <div class="step-card tilt-card stagger-child">
-                <div class="step-num">01</div>
-                <h4>Choose Your Council</h4>
-                <p>Browse our Senior and Junior Councils and pick the committee that fits your interests.</p>
-            </div>
-            <div class="step-card tilt-card stagger-child">
-                <div class="step-num">02</div>
-                <h4>Submit Registration</h4>
-                <p>Fill out the form above, or have your school coordinator submit a group registration.</p>
-            </div>
-            <div class="step-card tilt-card stagger-child">
-                <div class="step-num">03</div>
-                <h4>Prepare &amp; Arrive</h4>
-                <p>Download your background guide from Resources and arrive ready to debate.</p>
-            </div>
+        <div class="coming-soon-card reveal">
+            <h2 class="section-title section-title-center">Registration <span class="highlight">Coming Soon</span></h2>
+            <p class="coming-soon-message">Delegate registration for NewMUN 2026 will open shortly. Keep an eye on our social media for the announcement.</p>
         </div>
     </div>
 </section>
@@ -459,7 +312,7 @@
                     <li style="margin-bottom:8px;"><a href="oc.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">OC</a></li>
                     <li style="margin-bottom:8px;"><a href="faq-resources.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">FAQ & Resources</a></li>
                     <li style="margin-bottom:8px;"><a href="gallery.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Gallery</a></li>
-                    <li style="margin-bottom:8px;"><a href="sponsors.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Sponsors</a></li>
+                    
                 </ul>
             </div>
             <div>
@@ -494,52 +347,6 @@
 
 
 <button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
-        <div class="tl-row"><label>Color 1</label><input type="color" id="tlNavy" value="#0A1128" /></div>
-        <div class="tl-row"><label>Color 2</label><input type="color" id="tlNavy2" value="#150f30" /></div>
-        <div class="tl-row"><label>Color 3</label><input type="color" id="tlViolet" value="#3a1768" /></div>
-        <div class="tl-row"><label>Color 4</label><input type="color" id="tlViolet2" value="#5b2a9e" /></div>
-    </div>
-
-    <div class="tl-group">
-        <div class="tl-group-label"><i class="fas fa-star"></i> Accent</div>
-        <div class="tl-row"><label>Gold</label><input type="color" id="tlGold" value="#D4AF37" /></div>
-        <div class="tl-row"><label>Gold Light</label><input type="color" id="tlGoldLight" value="#f0d78c" /></div>
-    </div>
-
-    <div class="tl-group">
-        <div class="tl-group-label"><i class="fas fa-arrows-alt"></i> Gradient Angle</div>
-        <div class="tl-slider-row">
-            <div class="tl-top"><span>Angle</span><span id="tlAngleVal">125°</span></div>
-            <input type="range" id="tlAngle" min="0" max="360" value="125" />
-        </div>
-    </div>
-
-    <div class="tl-group">
-        <div class="tl-group-label"><i class="fas fa-blender"></i> Glass Depth</div>
-        <div class="tl-slider-row">
-            <div class="tl-top"><span>Blur</span><span id="tlBlurVal">20px</span></div>
-            <input type="range" id="tlBlur" min="4" max="40" value="20" />
-        </div>
-        <div class="tl-slider-row">
-            <div class="tl-top"><span>Opacity</span><span id="tlOpacityVal">5.5%</span></div>
-            <input type="range" id="tlOpacity" min="0" max="20" value="5.5" step="0.5" />
-        </div>
-    </div>
-
-    <div class="tl-group">
-        <div class="tl-group-label"><i class="fas fa-font"></i> Font Pairing</div>
-        <select id="tlFontPair">
-            <option value="playfair-inter">Playfair Display + Inter</option>
-            <option value="cormorant-manrope">Cormorant Garamond + Manrope</option>
-            <option value="fraunces-work">Fraunces + Work Sans</option>
-            <option value="marcellus-jost">Marcellus + Jost</option>
-            <option value="baskerville-source">Libre Baskerville + Source Sans Pro</option>
-            <option value="bodoni-dm">Bodoni Moda + DM Sans</option>
-        </select>
-    </div>
-
-    <button class="tl-reset-btn" id="tlReset"><i class="fas fa-undo"></i> Reset to Default</button>
-</div>
 
 <div id="particleNetwork" style="position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;"></div>
 

@@ -133,9 +133,10 @@
             text-transform: uppercase;
         }
         .council-logo {
-            max-width: 80px;
-            max-height: 80px;
-            margin: 8px auto;
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            margin: 0 auto 16px;
             display: block;
         }
         .council-group-header {
@@ -181,7 +182,7 @@
             <li><a href="oc.html">OC</a></li>
             <li><a href="faq-resources.html">FAQ & Resources</a></li>
             <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="sponsors.html">Sponsors</a></li>
+            
             <li><a href="register.html" class="btn-outline">Register</a></li>
         </ul>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -225,62 +226,50 @@
             </div>
             <div class="councils-grid tilt-wrap reveal-stagger">
                 <div class="council-card tilt-card stagger-child theme-unsc">
-                    <!-- COUNCIL LOGO: paste path here, e.g. logos/unsc.png -->
-                    <img src="" alt="United Nations Security Council logo" class="council-logo">
-                    <div class="council-media"><i class="fas fa-shield-alt"></i></div>
+                    <div class="council-media"><!-- COUNCIL LOGO: paste path here, e.g. logos/unsc.png --><img src="" alt="United Nations Security Council logo" class="council-logo"></div>
                     <h3>United Nations Security Council</h3>
                     <span class="subtitle">UNSC</span>
-                    <div class="coming-soon-banner">Agenda Coming Soon</div>
+                    <p>The UN Security Council is the UN's most powerful organ, holding primary responsibility for maintaining international peace and security.</p>
                     <button class="know-more-btn" onclick="openModal('modal-unsc')">Know More <i class="fas fa-arrow-right"></i></button>
                 </div>
 
                 <div class="council-card tilt-card stagger-child theme-fifa">
-                    <!-- COUNCIL LOGO: paste path here, e.g. logos/fifa.png -->
-                    <img src="" alt="FIFA logo" class="council-logo">
-                    <div class="council-media"><i class="fas fa-futbol"></i></div>
+                    <div class="council-media"><!-- COUNCIL LOGO: paste path here, e.g. logos/fifa.png --><img src="" alt="FIFA logo" class="council-logo"></div>
                     <h3>Fédération Internationale de Football Association</h3>
                     <span class="subtitle">FIFA</span>
-                    <div class="coming-soon-banner">Agenda Coming Soon</div>
+                    <p>FIFA governs world football, setting policy on player welfare, competition structure, and the sport's financial future.</p>
                     <button class="know-more-btn" onclick="openModal('modal-fifa')">Know More <i class="fas fa-arrow-right"></i></button>
                 </div>
 
                 <div class="council-card tilt-card stagger-child theme-unesco">
-                    <!-- COUNCIL LOGO: paste path here, e.g. logos/unesco.png -->
-                    <img src="" alt="UNESCO logo" class="council-logo">
-                    <div class="council-media"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="council-media"><!-- COUNCIL LOGO: paste path here, e.g. logos/unesco.png --><img src="" alt="UNESCO logo" class="council-logo"></div>
                     <h3>UNESCO</h3>
                     <span class="subtitle">United Nations Educational, Scientific and Cultural Organization</span>
-                    <div class="coming-soon-banner">Agenda Coming Soon</div>
+                    <p>UNESCO promotes international cooperation in education, science, and culture.</p>
                     <button class="know-more-btn" onclick="openModal('modal-unesco')">Know More <i class="fas fa-arrow-right"></i></button>
                 </div>
 
                 <div class="council-card tilt-card stagger-child theme-fcc-aot">
-                    <!-- COUNCIL LOGO: paste path here, e.g. logos/aot.png -->
-                    <img src="" alt="Attack on Titan logo" class="council-logo">
-                    <div class="council-media"><i class="fas fa-fire"></i></div>
+                    <div class="council-media"><!-- COUNCIL LOGO: paste path here, e.g. logos/aot.png --><img src="" alt="Attack on Titan logo" class="council-logo"></div>
                     <h3>Fictional Crisis Committee</h3>
                     <span class="subtitle">Attack on Titan — Shingeki no Kyojin</span>
-                    <div class="coming-soon-banner">Agenda Coming Soon</div>
+                    <p>A fictional crisis committee set within the world of Attack on Titan.</p>
                     <button class="know-more-btn" onclick="openModal('modal-fcc-aot')">Know More <i class="fas fa-arrow-right"></i></button>
                 </div>
 
                 <div class="council-card tilt-card stagger-child theme-loksabha">
-                    <!-- COUNCIL LOGO: paste path here, e.g. logos/loksabha.png -->
-                    <img src="" alt="Lok Sabha logo" class="council-logo">
-                    <div class="council-media"><i class="fas fa-landmark"></i></div>
+                    <div class="council-media"><!-- COUNCIL LOGO: paste path here, e.g. logos/loksabha.png --><img src="" alt="Lok Sabha logo" class="council-logo"></div>
                     <h3>Lok Sabha</h3>
                     <span class="subtitle">Indian Parliament</span>
-                    <div class="coming-soon-banner">Agenda Coming Soon</div>
+                    <p>A simulation of India's lower house of Parliament, where delegates take on the roles of sitting MPs and ministers.</p>
                     <button class="know-more-btn" onclick="openModal('modal-loksabha')">Know More <i class="fas fa-arrow-right"></i></button>
                 </div>
 
                 <div class="council-card tilt-card stagger-child theme-csw">
-                    <!-- COUNCIL LOGO: paste path here, e.g. logos/csw.png -->
-                    <img src="" alt="Commission on the Status of Women logo" class="council-logo">
-                    <div class="council-media"><i class="fas fa-venus"></i></div>
+                    <div class="council-media"><!-- COUNCIL LOGO: paste path here, e.g. logos/csw.png --><img src="" alt="Commission on the Status of Women logo" class="council-logo"></div>
                     <h3>Commission on the Status of Women</h3>
                     <span class="subtitle">CSW</span>
-                    <div class="coming-soon-banner">Agenda Coming Soon</div>
+                    <p>The UN Commission on the Status of Women is the principal global body dedicated to gender equality and the advancement of women.</p>
                     <button class="know-more-btn" onclick="openModal('modal-csw')">Know More <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
@@ -295,32 +284,26 @@
             </div>
             <div class="councils-grid tilt-wrap reveal-stagger">
                 <div class="council-card tilt-card stagger-child theme-unep">
-                    <!-- COUNCIL LOGO: paste path here, e.g. logos/unep.png -->
-                    <img src="" alt="UNEP logo" class="council-logo">
-                    <div class="council-media"><i class="fas fa-leaf"></i></div>
+                    <div class="council-media"><!-- COUNCIL LOGO: paste path here, e.g. logos/unep.png --><img src="" alt="UNEP logo" class="council-logo"></div>
                     <h3>UNEP</h3>
                     <span class="subtitle">United Nations Environment Programme</span>
-                    <div class="coming-soon-banner">Agenda Coming Soon</div>
+                    <p>The United Nations Environment Programme coordinates the UN's environmental activities.</p>
                     <button class="know-more-btn" onclick="openModal('modal-unep')">Know More <i class="fas fa-arrow-right"></i></button>
                 </div>
 
                 <div class="council-card tilt-card stagger-child theme-unoosa">
-                    <!-- COUNCIL LOGO: paste path here, e.g. logos/unoosa.png -->
-                    <img src="" alt="UNOOSA logo" class="council-logo">
-                    <div class="council-media"><i class="fas fa-rocket"></i></div>
+                    <div class="council-media"><!-- COUNCIL LOGO: paste path here, e.g. logos/unoosa.png --><img src="" alt="UNOOSA logo" class="council-logo"></div>
                     <h3>UNOOSA</h3>
                     <span class="subtitle">United Nations Office for Outer Space Affairs</span>
-                    <div class="coming-soon-banner">Agenda Coming Soon</div>
+                    <p>The UN Office for Outer Space Affairs oversees international cooperation in the peaceful use of outer space.</p>
                     <button class="know-more-btn" onclick="openModal('modal-unoosa')">Know More <i class="fas fa-arrow-right"></i></button>
                 </div>
 
                 <div class="council-card tilt-card stagger-child theme-fcc-avatar">
-                    <!-- COUNCIL LOGO: paste path here, e.g. logos/avatar.png -->
-                    <img src="" alt="Avatar The Last Airbender logo" class="council-logo">
-                    <div class="council-media"><i class="fas fa-wind"></i></div>
+                    <div class="council-media"><!-- COUNCIL LOGO: paste path here, e.g. logos/avatar.png --><img src="" alt="Avatar The Last Airbender logo" class="council-logo"></div>
                     <h3>Fictional Crisis Committee</h3>
                     <span class="subtitle">Avatar: The Last Airbender</span>
-                    <div class="coming-soon-banner">Agenda Coming Soon</div>
+                    <p>A fictional crisis committee set in the world of Avatar: The Last Airbender.</p>
                     <button class="know-more-btn" onclick="openModal('modal-fcc-avatar')">Know More <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
@@ -352,7 +335,7 @@
                     <li style="margin-bottom:8px;"><a href="oc.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">OC</a></li>
                     <li style="margin-bottom:8px;"><a href="faq-resources.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">FAQ & Resources</a></li>
                     <li style="margin-bottom:8px;"><a href="gallery.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Gallery</a></li>
-                    <li style="margin-bottom:8px;"><a href="sponsors.html" style="font-size:0.9rem;transition:0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">Sponsors</a></li>
+                    
                 </ul>
             </div>
             <div>
@@ -394,10 +377,7 @@
         <div class="modal-section-label">Overview</div>
         <p>The UN Security Council is the UN's most powerful organ, holding primary responsibility for maintaining international peace and security. Delegates negotiate binding resolutions on today's most pressing security crises.</p>
         <div class="modal-section-label">Agenda</div>
-        <ul>
-            <li><i class="fas fa-circle"></i> The re-evaluation of the UN Security Council: reforms in veto powers</li>
-            <li><i class="fas fa-circle"></i> Environmental resource security and defence of nations</li>
-        </ul>
+        <div class="coming-soon-banner">Agenda Coming Soon</div>
         <div class="modal-section-label">Executive Board</div>
         <div class="modal-eb-row">
             <div class="modal-eb-chip"><div class="eb-avatar">RH</div><div><div class="eb-name">Rayyan Haque</div><div class="eb-role">Chair</div></div></div>
@@ -414,10 +394,7 @@
         <div class="modal-section-label">Overview</div>
         <p>FIFA governs world football, setting policy on player welfare, competition structure, and the sport's financial future. Delegates represent member federations shaping the game's next era.</p>
         <div class="modal-section-label">Agenda</div>
-        <ul>
-            <li><i class="fas fa-circle"></i> Safeguarding the rights and welfare of young athletes in international sports</li>
-            <li><i class="fas fa-circle"></i> Promoting financial sustainability and competitive balance in professional football</li>
-        </ul>
+        <div class="coming-soon-banner">Agenda Coming Soon</div>
         <div class="modal-section-label">Executive Board</div>
         <div class="modal-eb-row">
             <div class="modal-eb-chip"><div class="eb-avatar">NA</div><div><div class="eb-name">Noor Al-Sayed</div><div class="eb-role">Chair</div></div></div>
@@ -434,10 +411,7 @@
         <div class="modal-section-label">Overview</div>
         <p>UNESCO promotes international cooperation in education, science, and culture. This committee tackles the ethical frontiers of emerging technology and children's digital rights.</p>
         <div class="modal-section-label">Agenda</div>
-        <ul>
-            <li><i class="fas fa-circle"></i> Standardizing under-16 social media prohibition vs. safeguarding youth digital rights</li>
-            <li><i class="fas fa-circle"></i> The ethics of genetic engineering and bio-data privacy</li>
-        </ul>
+        <div class="coming-soon-banner">Agenda Coming Soon</div>
         <div class="modal-section-label">Executive Board</div>
         <div class="modal-eb-row">
             <div class="modal-eb-chip"><div class="eb-avatar">ZA</div><div><div class="eb-name">Zainab Al-Ansari</div><div class="eb-role">Chair</div></div></div>
@@ -454,10 +428,7 @@
         <div class="modal-section-label">Overview</div>
         <p>A fictional crisis committee set within the world of Attack on Titan, where delegates respond to fast-moving, in-universe emergencies that test improvisation as much as diplomacy.</p>
         <div class="modal-section-label">Agenda</div>
-        <ul>
-            <li><i class="fas fa-circle"></i> Establishing international standards for the ethical regulation of advanced biological research</li>
-            <li><i class="fas fa-circle"></i> Standardizing civil law enforcement equipment and operational protocols in urban environments</li>
-        </ul>
+        <div class="coming-soon-banner">Agenda Coming Soon</div>
         <div class="modal-section-label">Executive Board</div>
         <div class="modal-eb-row">
             <div class="modal-eb-chip"><div class="eb-avatar">AN</div><div><div class="eb-name">Arjun Nair</div><div class="eb-role">Chair</div></div></div>
@@ -474,10 +445,7 @@
         <div class="modal-section-label">Overview</div>
         <p>A simulation of India's lower house of Parliament, where delegates take on the roles of sitting MPs and ministers, debating live domestic legislation across party lines.</p>
         <div class="modal-section-label">Agenda</div>
-        <ul>
-            <li><i class="fas fa-circle"></i> Advancing the Women's Reservation Bill</li>
-            <li><i class="fas fa-circle"></i> Viksit Bharat Shiksha Adhishthan Bill (Developed India Education Establishment Bill), 2025</li>
-        </ul>
+        <div class="coming-soon-banner">Agenda Coming Soon</div>
         <div class="modal-section-label">Executive Board</div>
         <div class="modal-eb-row">
             <div class="modal-eb-chip"><div class="eb-avatar">PM</div><div><div class="eb-name">Priya Menon</div><div class="eb-role">Chair</div></div></div>
@@ -494,10 +462,7 @@
         <div class="modal-section-label">Overview</div>
         <p>The UN Commission on the Status of Women is the principal global body dedicated to gender equality and the advancement of women, addressing policy on health, leadership, and representation.</p>
         <div class="modal-section-label">Agenda</div>
-        <ul>
-            <li><i class="fas fa-circle"></i> Global standards and maternal care</li>
-            <li><i class="fas fa-circle"></i> Advancing women's representation in political and economic leadership</li>
-        </ul>
+        <div class="coming-soon-banner">Agenda Coming Soon</div>
         <div class="modal-section-label">Executive Board</div>
         <div class="modal-eb-row">
             <div class="modal-eb-chip"><div class="eb-avatar">SA</div><div><div class="eb-name">Sara Al-Khalifa</div><div class="eb-role">Chair</div></div></div>
@@ -514,10 +479,7 @@
         <div class="modal-section-label">Overview</div>
         <p>The United Nations Environment Programme coordinates the UN's environmental activities, guiding delegates through emerging ecological and climate policy challenges.</p>
         <div class="modal-section-label">Agenda</div>
-        <ul>
-            <li><i class="fas fa-circle"></i> Ethics of green mining for EV batteries</li>
-            <li><i class="fas fa-circle"></i> Geoengineering &amp; weather modification</li>
-        </ul>
+        <div class="coming-soon-banner">Agenda Coming Soon</div>
         <div class="modal-section-label">Executive Board</div>
         <div class="modal-eb-row">
             <div class="modal-eb-chip"><div class="eb-avatar">LH</div><div><div class="eb-name">Layla Hassan</div><div class="eb-role">Chair</div></div></div>
@@ -534,10 +496,7 @@
         <div class="modal-section-label">Overview</div>
         <p>The UN Office for Outer Space Affairs oversees international cooperation in the peaceful use of outer space, from resource governance to the growing commercial space industry.</p>
         <div class="modal-section-label">Agenda</div>
-        <ul>
-            <li><i class="fas fa-circle"></i> Management of extra-terrestrial resources and planetary protection</li>
-            <li><i class="fas fa-circle"></i> Commercial space tourism and safety</li>
-        </ul>
+        <div class="coming-soon-banner">Agenda Coming Soon</div>
         <div class="modal-section-label">Executive Board</div>
         <div class="modal-eb-row">
             <div class="modal-eb-chip"><div class="eb-avatar">AT</div><div><div class="eb-name">Aryan Thomas</div><div class="eb-role">Chair</div></div></div>
@@ -554,10 +513,7 @@
         <div class="modal-section-label">Overview</div>
         <p>A fictional crisis committee set in the world of Avatar: The Last Airbender, where delegates navigate resource governance and infrastructure challenges across the four nations.</p>
         <div class="modal-section-label">Agenda</div>
-        <ul>
-            <li><i class="fas fa-circle"></i> International control over emerging extractive industries</li>
-            <li><i class="fas fa-circle"></i> Promoting universal standards for clean water access and sanitation infrastructure in rural settlements</li>
-        </ul>
+        <div class="coming-soon-banner">Agenda Coming Soon</div>
         <div class="modal-section-label">Executive Board</div>
         <div class="modal-eb-row">
             <div class="modal-eb-chip"><div class="eb-avatar">MP</div><div><div class="eb-name">Meena Pillai</div><div class="eb-role">Chair</div></div></div>
