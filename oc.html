@@ -49,41 +49,24 @@
             border-color: rgba(212,175,55,0.4);
             box-shadow: var(--shadow-lg), 0 0 30px rgba(212,175,55,0.14) !important;
         }
-        .oc-card .avatar {
+        .oc-photo {
             width: 120px;
             height: 120px;
             border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
             margin: 0 auto 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-heading), serif;
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--white);
-            background: linear-gradient(150deg, var(--navy), var(--violet));
-            border: 4px solid var(--gold);
-            transition: border-color 0.3s;
-            animation: float 3.8s ease-in-out infinite;
+            display: block;
         }
-        .oc-card:nth-child(2) .avatar { animation-delay: 0.15s; }
-        .oc-card:nth-child(3) .avatar { animation-delay: 0.3s; }
-        .oc-card:nth-child(4) .avatar { animation-delay: 0.45s; }
-        .oc-card:nth-child(5) .avatar { animation-delay: 0.6s; }
-        .oc-card:nth-child(6) .avatar { animation-delay: 0.75s; }
-        .oc-card:nth-child(7) .avatar { animation-delay: 0.9s; }
-        .oc-card:nth-child(8) .avatar { animation-delay: 1.05s; }
-        .oc-card:hover .avatar {
-            border-color: var(--gold-light);
+        .oc-position {
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 12px;
         }
         .oc-card h3 {
             font-size: 1.1rem;
             margin-bottom: 4px;
-        }
-        .oc-card .position {
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 0.9rem;
         }
         .oc-card .expand-hint {
             color: var(--gray);
@@ -159,67 +142,229 @@
         <div class="oc-grid tilt-wrap reveal-stagger">
             
             <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-1')">
-                <div class="avatar">AK</div>
-                <h3>Aarav Kumar</h3>
-                <div class="position">Secretary-General</div>
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/shawnita.jpg -->
+                <img src="" alt="Shawnita Jose Anand" class="oc-photo">
+                <h3>Shawnita Jose Anand</h3>
+                <p class="oc-position">Secretary General</p>
                 <div class="expand-hint">Click for bio</div>
             </div>
 
-            
             <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-2')">
-                <div class="avatar">SN</div>
-                <h3>Sara Nasser</h3>
-                <div class="position">Deputy Secretary-General</div>
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/edwin.jpg -->
+                <img src="" alt="Edwin Prince" class="oc-photo">
+                <h3>Edwin Prince</h3>
+                <p class="oc-position">Deputy Secretary General</p>
                 <div class="expand-hint">Click for bio</div>
             </div>
 
-            
             <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-3')">
-                <div class="avatar">MA</div>
-                <h3>Mohammed Al-Ali</h3>
-                <div class="position">Director of Committees</div>
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/katherine.jpg -->
+                <img src="" alt="Katherine Grace Jishu" class="oc-photo">
+                <h3>Katherine Grace Jishu</h3>
+                <p class="oc-position">MUN Student Director</p>
                 <div class="expand-hint">Click for bio</div>
             </div>
 
-            
             <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-4')">
-                <div class="avatar">LR</div>
-                <h3>Leena Rahman</h3>
-                <div class="position">Head of Logistics</div>
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/sree.jpg -->
+                <img src="" alt="Sree Lekshmi Prasad" class="oc-photo">
+                <h3>Sree Lekshmi Prasad</h3>
+                <p class="oc-position">Head of Delegate and Chair Training</p>
                 <div class="expand-hint">Click for bio</div>
             </div>
 
-            
             <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-5')">
-                <div class="avatar">KA</div>
-                <h3>Khalid Al-Faisal</h3>
-                <div class="position">Head of Media</div>
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/rithu.jpg -->
+                <img src="" alt="Rithu Rajeev" class="oc-photo">
+                <h3>Rithu Rajeev</h3>
+                <p class="oc-position">Head of Public Relations</p>
                 <div class="expand-hint">Click for bio</div>
             </div>
 
-            
             <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-6')">
-                <div class="avatar">FM</div>
-                <h3>Fatima Mirza</h3>
-                <div class="position">Head of Outreach</div>
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/keerthana.jpg -->
+                <img src="" alt="Keerthana Bijukumar" class="oc-photo">
+                <h3>Keerthana Bijukumar</h3>
+                <p class="oc-position">Head of Journalists</p>
                 <div class="expand-hint">Click for bio</div>
             </div>
 
-            
             <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-7')">
-                <div class="avatar">AA</div>
-                <h3>Ali Al-Amin</h3>
-                <div class="position">Head of Design</div>
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/jia.jpg -->
+                <img src="" alt="Jia Abraham" class="oc-photo">
+                <h3>Jia Abraham</h3>
+                <p class="oc-position">Head Of Hospitality</p>
                 <div class="expand-hint">Click for bio</div>
             </div>
 
-            
             <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-8')">
-                <div class="avatar">NA</div>
-                <h3>Nora Al-Khalifa</h3>
-                <div class="position">Head of Finance</div>
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/tharuli.jpg -->
+                <img src="" alt="Tharuli Yehansa" class="oc-photo">
+                <h3>Tharuli Yehansa</h3>
+                <p class="oc-position">Head of Media</p>
                 <div class="expand-hint">Click for bio</div>
             </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-9')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/ansh.jpg -->
+                <img src="" alt="Ansh Shetty" class="oc-photo">
+                <h3>Ansh Shetty</h3>
+                <p class="oc-position">Head of Finance</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-10')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/aalbi.jpg -->
+                <img src="" alt="Aalbi Sam Abraham" class="oc-photo">
+                <h3>Aalbi Sam Abraham</h3>
+                <p class="oc-position">Head of Security and Runners</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-11')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/jayaram.jpg -->
+                <img src="" alt="Jayaram Madanraj" class="oc-photo">
+                <h3>Jayaram Madanraj</h3>
+                <p class="oc-position">Head of Photography and Videography</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-12')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/govind.jpg -->
+                <img src="" alt="Govind Krishna" class="oc-photo">
+                <h3>Govind Krishna</h3>
+                <p class="oc-position">Crisis Director</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-13')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/aarav.jpg -->
+                <img src="" alt="Aarav Maurya" class="oc-photo">
+                <h3>Aarav Maurya</h3>
+                <p class="oc-position">Undersecretary of Delegate and Chair Training</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-14')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/asim.jpg -->
+                <img src="" alt="Asim Ehteram" class="oc-photo">
+                <h3>Asim Ehteram</h3>
+                <p class="oc-position">Undersecretary of Research</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-15')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/faizur.jpg -->
+                <img src="" alt="Faizur Rahman" class="oc-photo">
+                <h3>Faizur Rahman</h3>
+                <p class="oc-position">Under Secretary of Research</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-16')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/aswathy.jpg -->
+                <img src="" alt="Aswathy Rajesh" class="oc-photo">
+                <h3>Aswathy Rajesh</h3>
+                <p class="oc-position">Undersecretary of Public Relations</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-17')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/yatika.jpg -->
+                <img src="" alt="Yatika Manghwani" class="oc-photo">
+                <h3>Yatika Manghwani</h3>
+                <p class="oc-position">Undersecretary Of Public Relations</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-18')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/naomi.jpg -->
+                <img src="" alt="Naomi Anna Linu" class="oc-photo">
+                <h3>Naomi Anna Linu</h3>
+                <p class="oc-position">Undersecretary Of Media</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-19')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/aswin.jpg -->
+                <img src="" alt="Aswin Dineskumar" class="oc-photo">
+                <h3>Aswin Dineskumar</h3>
+                <p class="oc-position">Under Secretary of Photography and Videography</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-20')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/fathima.jpg -->
+                <img src="" alt="Fathima Muhammed" class="oc-photo">
+                <h3>Fathima Muhammed</h3>
+                <p class="oc-position">US of Finance and Logistics</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-21')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/faiha.jpg -->
+                <img src="" alt="Faiha Muhamed Shameer" class="oc-photo">
+                <h3>Faiha Muhamed Shameer</h3>
+                <p class="oc-position">Under Secretary of Hospitality</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-22')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/samrudh.jpg -->
+                <img src="" alt="Samrudh Sridhar" class="oc-photo">
+                <h3>Samrudh Sridhar</h3>
+                <p class="oc-position">Under Secretary of Security and Runners</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-23')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/eslin.jpg -->
+                <img src="" alt="Eslin Sosa Philip" class="oc-photo">
+                <h3>Eslin Sosa Philip</h3>
+                <p class="oc-position">Student Advisory Board</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-24')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/neil.jpg -->
+                <img src="" alt="Neil Jose" class="oc-photo">
+                <h3>Neil Jose</h3>
+                <p class="oc-position">Advisory Member</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-25')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/nahreen.jpg -->
+                <img src="" alt="Nahreen Mariyam Shameer" class="oc-photo">
+                <h3>Nahreen Mariyam Shameer</h3>
+                <p class="oc-position">Member of Advisory Committee</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-26')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/arnav.jpg -->
+                <img src="" alt="Arnav Chakraborty" class="oc-photo">
+                <h3>Arnav Chakraborty</h3>
+                <p class="oc-position">Advisory Council - IT Team</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-27')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/atharva.jpg -->
+                <img src="" alt="Atharva Arul Prakash" class="oc-photo">
+                <h3>Atharva Arul Prakash</h3>
+                <p class="oc-position">Member of IT</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
+            <div class="oc-card tilt-card stagger-child" onclick="openModal('modal-oc-28')">
+                <!-- OC PHOTO: paste path here, e.g. Pics/oc/ramanan.jpg -->
+                <img src="" alt="Ramanan Karthikeyan" class="oc-photo">
+                <h3>Ramanan Karthikeyan</h3>
+                <p class="oc-position">Member of IT</p>
+                <div class="expand-hint">Click for bio</div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -285,65 +430,225 @@
 <div class="modal-overlay" id="modal-oc-1">
     <div class="modal-box">
         <button class="modal-close" onclick="closeModal('modal-oc-1')"><i class="fas fa-times"></i></button>
-        <h3>Aarav Kumar</h3>
-        <div class="modal-subtitle">Secretary-General</div>
-        <p>Aarav is a Grade 12 student with 4 years of MUN experience. He has chaired UNSC at NewMUN 2025 and was Best Delegate at BMUNIS 2025.</p>
+        <h3>Shawnita Jose Anand</h3>
+        <p class="oc-position">Secretary General</p>
+        <p>Shawnita Jose Anand began her MUN journey in 2022 and has numerous years of experience in MUN. Smart, easy-going, and approachable, she is always happy to help delegates with their MUN-related doubts and challenges.</p>
     </div>
 </div>
 <div class="modal-overlay" id="modal-oc-2">
     <div class="modal-box">
         <button class="modal-close" onclick="closeModal('modal-oc-2')"><i class="fas fa-times"></i></button>
-        <h3>Sara Nasser</h3>
-        <div class="modal-subtitle">Deputy Secretary-General</div>
-        <p>Sara is a passionate debater and former Head of Media for NewMUN 2025. She specializes in international law and human rights advocacy.</p>
+        <h3>Edwin Prince</h3>
+        <p class="oc-position">Deputy Secretary General</p>
+        <p>Hi, my name is Edwin Prince from class XI A. I enjoy listening to music and helping people out. Looking forward to help you all.</p>
     </div>
 </div>
 <div class="modal-overlay" id="modal-oc-3">
     <div class="modal-box">
         <button class="modal-close" onclick="closeModal('modal-oc-3')"><i class="fas fa-times"></i></button>
-        <h3>Mohammed Al-Ali</h3>
-        <div class="modal-subtitle">Director of Committees</div>
-        <p>Mohammed has chaired 5 MUN conferences across Bahrain. He brings expertise in global governance and is a former President of the Student Council.</p>
+        <h3>Katherine Grace Jishu</h3>
+        <p class="oc-position">MUN Student Director</p>
+        <p>Katherine serves as the Student Director for the eighth edition of our NewMUN. She is currently in Class 12 and has a background of diplomatic debating, public speaking, and conference organizing that fuels her interest in youth voice. An active MUN and public speaking participant, Katherine is excited to bring delegates and a team of passionate people together in a space of debate, diplomacy, and impactful collaboration.</p>
     </div>
 </div>
 <div class="modal-overlay" id="modal-oc-4">
     <div class="modal-box">
         <button class="modal-close" onclick="closeModal('modal-oc-4')"><i class="fas fa-times"></i></button>
-        <h3>Leena Rahman</h3>
-        <div class="modal-subtitle">Head of Logistics</div>
-        <p>Leena ensures seamless conference operations. She managed logistics for 400+ delegates at NewMUN 2025 and is known for her organizational prowess.</p>
+        <h3>Sree Lekshmi Prasad</h3>
+        <p class="oc-position">Head of Delegate and Chair Training</p>
+        <p>Sree Lekshmi, a Class XII student and the Head of Delegate & Chair Training, embodies leadership, diplomacy, and a deep commitment to excellence in Model United Nations. With a strong command of parliamentary procedure, debate, and diplomatic strategy, she plays a pivotal role in shaping confident and capable delegates and chairs. Through meticulous training and thoughtful mentorship, she strives to create a generation of participants equipped to engage in compelling discourse, navigate complex negotiations, and lead with purpose.</p>
     </div>
 </div>
 <div class="modal-overlay" id="modal-oc-5">
     <div class="modal-box">
         <button class="modal-close" onclick="closeModal('modal-oc-5')"><i class="fas fa-times"></i></button>
-        <h3>Khalid Al-Faisal</h3>
-        <div class="modal-subtitle">Head of Media</div>
-        <p>Khalid leads the media team covering the conference. An aspiring filmmaker, he created the official NewMUN 2025 highlight video.</p>
+        <h3>Rithu Rajeev</h3>
+        <p class="oc-position">Head of Public Relations</p>
+        <p>Rithu Rajeev, from Class XII, is the Head of Public Relations for the NewMUN VIII. She enjoys meeting new people, building connections, and bringing people together. Her interest in Marketing has strengthened her communication, creativity, networking, content creation, and social media skills. She is adaptable, enjoys trying new things, and sees every experience as an opportunity to learn. Outside of MUN, Rithu is a passionate Formula 1 fan and loves exploring new interests.</p>
     </div>
 </div>
 <div class="modal-overlay" id="modal-oc-6">
     <div class="modal-box">
         <button class="modal-close" onclick="closeModal('modal-oc-6')"><i class="fas fa-times"></i></button>
-        <h3>Fatima Mirza</h3>
-        <div class="modal-subtitle">Head of Outreach</div>
-        <p>Fatima manages school relations and delegate recruitment. She has brought in 15+ schools to participate in NewMUN 2026.</p>
+        <h3>Keerthana Bijukumar</h3>
+        <p class="oc-position">Head of Journalists</p>
+        <p>Keerthana Bijukumar is a Grade 11 student who is excited to take on the role of Head of Journalists. Her past MUN experiences inspired her to get more involved behind the scenes this year. She looks forward to working with the team, meeting new people, and capturing the moments that make this MUN special.</p>
     </div>
 </div>
 <div class="modal-overlay" id="modal-oc-7">
     <div class="modal-box">
         <button class="modal-close" onclick="closeModal('modal-oc-7')"><i class="fas fa-times"></i></button>
-        <h3>Ali Al-Amin</h3>
-        <div class="modal-subtitle">Head of Design</div>
-        <p>Ali is the creative force behind NewMUN's visual identity. He designed the 2026 logo, banners, and all conference materials.</p>
+        <h3>Jia Abraham</h3>
+        <p class="oc-position">Head Of Hospitality</p>
+        <p>Hey everyone! I'm Jia Abraham, a Grade 12 student and the Head of Hospitality for NewMUN VIII. After three MUN experiences, I've learned that a great conference is shaped just as much by the atmosphere as it is by the debate. This year, I'm excited to take that perspective behind the scenes, bringing creativity, attention to detail, and a people first approach to make NewMUN VIII an experience worth remembering.</p>
     </div>
 </div>
 <div class="modal-overlay" id="modal-oc-8">
     <div class="modal-box">
         <button class="modal-close" onclick="closeModal('modal-oc-8')"><i class="fas fa-times"></i></button>
-        <h3>Nora Al-Khalifa</h3>
-        <div class="modal-subtitle">Head of Finance</div>
-        <p>Nora manages the conference budget and sponsorship relations. She secured partnerships with 5 major sponsors for NewMUN 2026.</p>
+        <h3>Tharuli Yehansa</h3>
+        <p class="oc-position">Head of Media</p>
+        <p>Tharuli is a Grade 12 student passionate about media, editing, and content creation. She enjoys bringing creative ideas to life through engaging visuals and storytelling.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-9">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-9')"><i class="fas fa-times"></i></button>
+        <h3>Ansh Shetty</h3>
+        <p class="oc-position">Head of Finance</p>
+        <p>Ansh Shetty is a responsible and organized leader with strong decision-making skills. As Head of Finance, he ensures efficient and transparent financial management while contributing to a successful MUN.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-10">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-10')"><i class="fas fa-times"></i></button>
+        <h3>Aalbi Sam Abraham</h3>
+        <p class="oc-position">Head of Security and Runners</p>
+        <p>Aalbi Sam is a passionate sports enthusiast with a particular love for football and badminton. As the Head of Security and Runners, Aalbi is responsible for ensuring smooth coordination, discipline, and security throughout the conference. He aims to contribute to a well-organized and successful MUN experience for all delegates.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-11">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-11')"><i class="fas fa-times"></i></button>
+        <h3>Jayaram Madanraj</h3>
+        <p class="oc-position">Head of Photography and Videography</p>
+        <p>Passionate about photography, with a strong interest in capturing moments that bring an event to life. Creative, detail-oriented, and always looking for unique perspectives behind the lens. Committed to documenting the energy, collaboration, and memorable moments of NISMUN Chapter VIII, 2026. As Head of Photography & Videography, I aim to lead the team in creating a visual story of the conference.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-12">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-12')"><i class="fas fa-times"></i></button>
+        <h3>Govind Krishna</h3>
+        <p class="oc-position">Crisis Director</p>
+        <p>If your council suddenly collapses into political chaos, economic disaster, international conflict, or something nobody could possibly have predicted... well, you're welcome. I'm a MUN enthusiast and professional enjoyer of controlled chaos, I'm responsible for creating and proceeding the crises that keep NEWMUN's councils alive. I loves putting delegates under pressure, watching them improvise, and occasionally wondering how they managed to make the situation even worse. Good luck, delegates. You're going to need it.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-13">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-13')"><i class="fas fa-times"></i></button>
+        <h3>Aarav Maurya</h3>
+        <p class="oc-position">Undersecretary of Delegate and Chair Training</p>
+        <p>Aarav Maurya, a Class XII student, takes on the role of Under-Secretary of the Department of Delegate and Chair Training this year. He focuses on turning complex debate rules into clear, structured training paths, helping every participant build strong speaking and leadership skills. Known for his organized approach and sharp attention to detail, Aarav is dedicated to raising the academic standards of the conference, ensuring a smooth, professional, and deeply impactful MUN experience for everyone.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-14">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-14')"><i class="fas fa-times"></i></button>
+        <h3>Asim Ehteram</h3>
+        <p class="oc-position">Undersecretary of Research</p>
+        <p>I am a student in Class 11, I have a strong interest in public speaking, international relations, and diplomacy. I am well-known for my curiosity, eagerness, and attention to detail, and I flourish in settings that promote open discussion, creativity, and critical thinking. I have grown really passionate about study, debate, and examining various viewpoints because to MUN.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-15">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-15')"><i class="fas fa-times"></i></button>
+        <h3>Faizur Rahman</h3>
+        <p class="oc-position">Under Secretary of Research</p>
+        <p>As the undersecreteary of research, Faizur Rahman will strive to make newmun-VIII one of, if not, the most memorable weekends of your school years.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-16">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-16')"><i class="fas fa-times"></i></button>
+        <h3>Aswathy Rajesh</h3>
+        <p class="oc-position">Undersecretary of Public Relations</p>
+        <p>Aswathy is a hardworking and creative social butterfly. Her ideas always stand out and make a statement in everything she does. She puts her whole heart into her work and is undoubtedly one of the most valuable members of the organizing committee.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-17">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-17')"><i class="fas fa-times"></i></button>
+        <h3>Yatika Manghwani</h3>
+        <p class="oc-position">Undersecretary Of Public Relations</p>
+        <p>What does it take to leave an impression? It takes someone who knows how to turn every moment into something worth remembering. Yatika Manghwani, Undersecretary of Public Relations, is a blend of precision, creativity, and an energy that refuses to be overlooked. With a mind that finds comfort in accountancy and a soul that finds rhythm in dancing, she brings both sharpness and spontaneity to everything she does. Driven by ambition, and a determination to make every experience count, Yatika is here to make her mark and leave an impression that lasts.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-18">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-18')"><i class="fas fa-times"></i></button>
+        <h3>Naomi Anna Linu</h3>
+        <p class="oc-position">Undersecretary Of Media</p>
+        <p>I'm Naomi, and I've always enjoyed messing around with bland ideas and turning them into vibrant designs and cool videos. As this year's Undersecretary of Media, I take charge in how our MUN looks to our audience by mixing my love of graphic design and editing with diplomacy. My task is to help build our social media platform, edit promotional videos and make sure that our visual aesthetic is always on point.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-19">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-19')"><i class="fas fa-times"></i></button>
+        <h3>Aswin Dineskumar</h3>
+        <p class="oc-position">Under Secretary of Photography and Videography</p>
+        <p>Aswin Dineskumar, a Class XI student, serves as our Undersecretary of Photography and Videography this year. Powered by a passion for visual storytelling, Aswin captures every critical moment from intense committee debates to key stage highlights through both photo and video. With a sharp eye for detail and technical precision behind the camera, he is dedicated to bringing the MUN experience to life through his lens.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-20">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-20')"><i class="fas fa-times"></i></button>
+        <h3>Fathima Muhammed</h3>
+        <p class="oc-position">US of Finance and Logistics</p>
+        <p>Fathima serves as the Under-Secretary of Finance & Logistics for this MUN. She works alongside the Secretariat to manage the financial and logistical requirements of the conference and ensure that its operations run smoothly. She brings strong organizational skills, attention to detail, and a commitment to teamwork to her role, and looks forward to making the conference a successful experience for everyone involved.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-21">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-21')"><i class="fas fa-times"></i></button>
+        <h3>Faiha Muhamed Shameer</h3>
+        <p class="oc-position">Under Secretary of Hospitality</p>
+        <p>Hey everyone! I'm Faiha Muhamed Shameer, a Grade 11 student serving as the Under Secretary of Hospitality for NewMUN VIII. Now in my 4 MUN journey, I'm dedicated to keeping things running effortlessly behind the scenes. Whether you're a delegate, guest, or part of the secretariat, I'm here to ensure you have a seamless, comfortable, and memorable conference experience.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-22">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-22')"><i class="fas fa-times"></i></button>
+        <h3>Samrudh Sridhar</h3>
+        <p class="oc-position">Under Secretary of Security and Runners</p>
+        <p>Samrudh is a Grade 12 student and the Under-Secretary of Security and Runners for NEWMUN VII. He is a determined and approachable individual who values discipline, teamwork, and taking on new challenges. With a strong interest in business, economics, and global affairs, Samrudh enjoys engaging in discussions and exploring different perspectives. Outside academics, he has a passion for fitness and enjoys discovering new experiences and pushing himself beyond his comfort zone. He looks forward to contributing to a well-organised, engaging, and memorable conference for all delegates.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-23">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-23')"><i class="fas fa-times"></i></button>
+        <h3>Eslin Sosa Philip</h3>
+        <p class="oc-position">Student Advisory Board</p>
+        <p>I am a 12th grade Commerce Student with deep interest in technological practices and financial analysis. I'm known for my helping mentality and artistic skill.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-24">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-24')"><i class="fas fa-times"></i></button>
+        <h3>Neil Jose</h3>
+        <p class="oc-position">Advisory Member</p>
+        <p>Neil Jose, a Class 12 student and member of the Advisory team, is known for his curiosity, hardworking mentality and commitment to innovative problem-solving.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-25">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-25')"><i class="fas fa-times"></i></button>
+        <h3>Nahreen Mariyam Shameer</h3>
+        <p class="oc-position">Member of Advisory Committee</p>
+        <p>Having served as Secretary General of last year's MUN, she now contributes to NewMUN as a member of the Advisory Committee. With experience in leadership, diplomacy, and conference management, she continues to support the team's growth and success. Her dedication and insight help ensure a well-organized conference.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-26">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-26')"><i class="fas fa-times"></i></button>
+        <h3>Arnav Chakraborty</h3>
+        <p class="oc-position">Advisory Council - IT Team</p>
+        <p>Arnav Chakroborty is an Advisory member of the IT OC. He is responsible, tech-savvy, and quick-thinking, with a strong ability to solve problems. He hopes to contribute to a smooth and successful MUN experience.</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-27">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-27')"><i class="fas fa-times"></i></button>
+        <h3>Atharva Arul Prakash</h3>
+        <p class="oc-position">Member of IT</p>
+        <p>A</p>
+    </div>
+</div>
+<div class="modal-overlay" id="modal-oc-28">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal('modal-oc-28')"><i class="fas fa-times"></i></button>
+        <h3>Ramanan Karthikeyan</h3>
+        <p class="oc-position">Member of IT</p>
+        <p>Ramanan is a Grade 10 student with a strong passion for technology and problem-solving. As a Member of the IT team, he works behind the scenes to keep the conference's digital systems running smoothly — from registration platforms to on-site tech support. Known for his curiosity and hands-on approach, he enjoys turning complex problems into simple, working solutions. He believes that a well-run MUN runs on good tech you never notice, and he's dedicated to making sure NewMUN VIII stays seamless from start to finish.</p>
     </div>
 </div>
 
