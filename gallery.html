@@ -29,11 +29,11 @@
     <style>
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
         .gallery-item {
-            aspect-ratio: 1;
+            aspect-ratio: 4/3;
             border-radius: 16px;
             overflow: hidden;
             background: var(--glass-bg);
@@ -127,7 +127,7 @@
 
         @media (max-width: 992px) {
             .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -216,11 +216,9 @@
         <h2 class="section-title section-title-center reveal" style="margin-bottom:12px;">
             Glimpses from <span class="highlight">NewMUN 2025</span>
         </h2>
-        <p class="section-subtitle section-title-center reveal" style="margin-bottom:32px;">
+        <p class="section-subtitle section-title-center reveal" style="margin-bottom:32px;text-align:center;">
             Moments of diplomacy, debate, and friendship.
         </p>
-
-        
 
         <div class="gallery-tabs reveal">
             <button class="gallery-tab active" data-filter="opening" type="button">Opening</button>
@@ -230,7 +228,7 @@
         </div>
 
         <div class="gallery-grid tilt-wrap">
-            
+            <!-- Opening category - 6 images (3 columns x 2 rows on desktop) -->
             <div class="gallery-item tilt-card featured gallery-visible" data-category="opening">
                 <img src="Pics25/opening/o1.jpg" alt="Opening Ceremony 2025" />
                 <span class="label">Opening Ceremony 2025</span>
@@ -243,8 +241,20 @@
                 <img src="Pics25/opening/o3.jpg" alt="Delegates Arrival" />
                 <span class="label">Delegates Arrival</span>
             </div>
+            <div class="gallery-item tilt-card gallery-visible" data-category="opening">
+                <img src="Pics25/opening/o4.jpg" alt="Stage Setup" />
+                <span class="label">Stage Setup</span>
+            </div>
+            <div class="gallery-item tilt-card gallery-visible" data-category="opening">
+                <img src="Pics25/opening/o5.jpg" alt="Welcome Speech" />
+                <span class="label">Welcome Speech</span>
+            </div>
+            <div class="gallery-item tilt-card gallery-visible" data-category="opening">
+                <img src="Pics25/opening/o6.jpg" alt="Opening Group Photo" />
+                <span class="label">Opening Group Photo</span>
+            </div>
 
-            
+            <!-- Councils category - 6 images -->
             <div class="gallery-item tilt-card" data-category="councils">
                 <img src="Pics25/councils/c1.jpg" alt="UNSC in Session" />
                 <span class="label">UNSC in Session</span>
@@ -257,8 +267,20 @@
                 <img src="Pics25/councils/c3.jpg" alt="Delegates Networking" />
                 <span class="label">Delegates Networking</span>
             </div>
+            <div class="gallery-item tilt-card" data-category="councils">
+                <img src="Pics25/councils/c4.jpg" alt="Council Debate" />
+                <span class="label">Council Debate</span>
+            </div>
+            <div class="gallery-item tilt-card" data-category="councils">
+                <img src="Pics25/councils/c5.jpg" alt="Resolution Writing" />
+                <span class="label">Resolution Writing</span>
+            </div>
+            <div class="gallery-item tilt-card" data-category="councils">
+                <img src="Pics25/councils/c6.jpg" alt="Committee Action" />
+                <span class="label">Committee Action</span>
+            </div>
 
-            
+            <!-- Awards category - 6 images -->
             <div class="gallery-item tilt-card" data-category="awards">
                 <img src="Pics25/awards/a1.jpg" alt="Awards Ceremony" />
                 <span class="label">Awards Ceremony</span>
@@ -271,8 +293,20 @@
                 <img src="Pics25/awards/a3.jpg" alt="Certificate Presentation" />
                 <span class="label">Certificate Presentation</span>
             </div>
+            <div class="gallery-item tilt-card" data-category="awards">
+                <img src="Pics25/awards/a4.jpg" alt="Winner Celebration" />
+                <span class="label">Winner Celebration</span>
+            </div>
+            <div class="gallery-item tilt-card" data-category="awards">
+                <img src="Pics25/awards/a5.jpg" alt="Team Awards" />
+                <span class="label">Team Awards</span>
+            </div>
+            <div class="gallery-item tilt-card" data-category="awards">
+                <img src="Pics25/awards/a6.jpg" alt="Final Applause" />
+                <span class="label">Final Applause</span>
+            </div>
 
-            
+            <!-- Closing category - 6 images -->
             <div class="gallery-item tilt-card" data-category="closing">
                 <img src="Pics25/closing/x1.jpg" alt="Closing Ceremony" />
                 <span class="label">Closing Ceremony</span>
@@ -284,6 +318,18 @@
             <div class="gallery-item tilt-card" data-category="closing">
                 <img src="Pics25/closing/x3.jpg" alt="Group Photo" />
                 <span class="label">Group Photo</span>
+            </div>
+            <div class="gallery-item tilt-card" data-category="closing">
+                <img src="Pics25/closing/x4.jpg" alt="Farewell Hugs" />
+                <span class="label">Farewell Hugs</span>
+            </div>
+            <div class="gallery-item tilt-card" data-category="closing">
+                <img src="Pics25/closing/x5.jpg" alt="Closing Speech" />
+                <span class="label">Closing Speech</span>
+            </div>
+            <div class="gallery-item tilt-card" data-category="closing">
+                <img src="Pics25/closing/x6.jpg" alt="Final Bow" />
+                <span class="label">Final Bow</span>
             </div>
         </div>
 
